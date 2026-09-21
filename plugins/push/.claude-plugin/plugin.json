@@ -1,0 +1,9 @@
+{
+  "name": "push",
+  "version": "0.1.0",
+  "description": "Extract finalized decisions, requirements, open questions, and metrics from the current chat and sync them into a shared Confluence page.",
+  "author": {
+    "name": "Atharva Shembekar",
+    "email": "ashembekar@ptc.com"
+  }
+}
