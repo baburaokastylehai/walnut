@@ -1,0 +1,9 @@
+{
+  "actions": [
+    {
+      "type": "exclude",
+      "candidate": "Hide the conventional Approvals view whenever Process Flow is enabled",
+      "reason": "assistant-originated and never confirmed by the human"
+    }
+  ]
+}
