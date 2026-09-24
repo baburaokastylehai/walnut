@@ -1,0 +1,38 @@
+{
+  "mode": "existing_project_migration",
+  "preserve": {
+    "existing_page": true,
+    "existing_display_ids": ["D1", "R1", "Q1"],
+    "existing_child_pages": [
+      "child-page-architecture",
+      "child-page-requirements"
+    ]
+  },
+  "actions": [
+    {
+      "type": "add",
+      "category": "decisions",
+      "candidate": "Process Flow categories hide the conventional Approvals view",
+      "expected_display_id": "D2"
+    },
+    {
+      "type": "no_op",
+      "existing": "R1",
+      "reason": "same confirmed requirement already exists"
+    },
+    {
+      "type": "no_op",
+      "existing": "Q1",
+      "reason": "the migration question remains unresolved"
+    }
+  ],
+  "migration_requirements": [
+    "do not renumber or recreate existing D/R/Q identifiers",
+    "do not wipe or rebuild the main destination page",
+    "do not recreate existing child pages when their mapping can be recovered",
+    "adopt existing records into Walnut internal identity without changing their human-facing IDs",
+    "preserve historical content unless an explicit semantic change requires refinement or supersession",
+    "new knowledge continues the existing display-ID sequence",
+    "migration is reconciliation, not reset"
+  ]
+}
