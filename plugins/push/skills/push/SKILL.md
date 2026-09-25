@@ -1,159 +1,249 @@
 ---
 name: push
-description: Build a detailed, complete record of everything confirmed as settled in this conversation and in the project's current files — decisions with their full stated reasoning, requirements, rejected proposals, open questions — and sync it into a shared Confluence page detailed enough for someone with zero context (a designer, a docs writer) to act on directly. Never records assistant-originated content or unconfirmed exploration.
+description: Keep durable project context straight across messy AI work. Inspect the current conversation, project context files, and an existing Walnut-managed destination; separate confirmed project truth from brainstorming and stale context; reconcile changes without duplicating or wiping history; and publish only what is genuinely new or changed. Confluence is the first supported destination.
 ---
 
-# /push — sync confirmed context to Confluence
+# /push
 
-## Purpose
-A Confluence page is the durable, shared source of truth for a project. This conversation — and the project's own working files — are where that truth actually gets produced; /push moves it onto the page. The skill has no hardcoded destination; the target page is resolved once per project and reused silently after that.
+your project gets messy. walnut keeps the part that matters.
 
-Every entry on the page is a complete, self-contained record. Someone with zero access to this conversation or these files must be able to pick up the page and act on it directly: a designer needs enough detail to structure their own work around what's been decided and proposed; a documentation team needs enough detail to know exactly which help articles, messaging, or docs require updating. When choosing between a shorter entry and a more complete one, write the complete one — detail is a requirement here, not something to trim for brevity.
+## What Walnut owns
 
-## Project Overview (required, always present)
-Before any category, the page must open with a short paragraph stating what the project actually is: the problem being solved, the goal, and its current phase (concept, prototype, pre-launch, in production, etc.) — sourced under the same confirmation test as everything else, never invented. This is the first thing a reader with zero context needs, and it's easy to let it get crowded out by meta-commentary about the page's own sync history ("this page was reset on…", "rebuilt from scratch after…"). That kind of housekeeping note, if included at all, is secondary and brief — it never replaces the actual project overview as the page's lead. Update the overview when the project's purpose or phase changes; it does not need touching on every push.
+The host AI owns the project work: brainstorming, research, coding, writing files, and exploration.
 
-Include a synthesized status, not just a static description, whenever the sources support it: what's locked/settled versus still being worked, any external validation that's happened (a demo shown, feedback gathered, a test run), and a release shape or timeline if one is confirmed. State these together, briefly — a reader shouldn't have to reconstruct "where does this actually stand" by piecing it together from scattered Decisions and Open Questions elsewhere on the page.
+Walnut owns what becomes durable shared project context.
 
-## Sources and freshness
-Both of these must be checked every run, independently — a quiet one does not excuse skipping the other:
-- This conversation. Even if nothing new was said, this alone never justifies skipping the file check below.
-- The project's own files (e.g. .md documents in the project folder) that are current and authoritative. A file can change with zero chat activity, and that alone is sufficient reason to push — check it regardless of how much or how little happened in the conversation.
+Walnut must not require the project to work in a Walnut-shaped way.
 
-Neither source is automatically "more current" than the other — check timestamps. If a project file has been modified more recently than the conversation last touched that topic, the file is the fresher source for it: read it for what changed. If the conversation is more recent than a given file, the conversation wins for that topic. When file and conversation genuinely conflict on the same point and it's unclear which is current, don't silently pick one — surface the conflict (Architecture & Cross-Impact or Open Questions, whichever fits).
+## Operating principle
 
-A project file only counts as a source when it's current and authoritative — a human wrote it, referenced it as the live spec, or it was freshly re-read this session and shows no sign of being superseded by something fresher. A stale or superseded draft is not a source to extract from directly; its staleness itself is worth recording (see Architecture & Cross-Impact) so nobody else mistakes it for current.
+**listen widely. publish carefully.**
 
-## Project file mirroring
-If the project has no files of its own yet, don't just silently skip this forever — an LLM is well-suited to producing exactly this kind of structured documentation, and generating it once gives the project the same durable, multi-document depth a well-run handoff has, instead of leaving everything permanently flattened into one page's bullets. See "If no project files exist yet" below for how to offer this properly.
+Discovery optimizes for recall. Publication optimizes for precision.
 
-When project files do exist (whether they were already there, or generated per the offer below): citing one by name ("see functional-layers.md") is not enough on its own. A teammate or another AI tool reading only this Confluence page has no way to open a file that lives solely on someone's local machine — the citation is a dead end for them. So for every project file confirmed current and authoritative (per Sources and freshness), maintain a child Confluence page that mirrors that file's full content — not a summary, not an extraction, the actual content — so it's genuinely reachable by anyone with access to this page, not just whoever is running /push.
+Do not publish directly from raw chat or file scanning.
 
-- The first time a file is confirmed current/authoritative, create a child page under this one (createConfluencePage, parentId = this page's ID) containing that file's full content — use contentFormat: markdown directly if the source is already Markdown, rather than hand-converting it.
-- On a later push, if the file's modification time is newer than when it was last mirrored, re-mirror it: overwrite the child page with the file's current full content. This is a mirror, not a synthesized record — it always matches the source exactly, unlike Decisions/Requirements, which are diffed bullet by bullet.
-- Only mirror readable text/Markdown documentation. A large binary or non-text artifact (a prototype .html file, a spreadsheet, an image) doesn't belong here — those stay in Linked Resources as a reference, not a full-content mirror.
-- List every mirrored file in Project Files (below) so a reader knows what exists and why it matters — the same way a good handoff document lists its own contents with a one-line reason to read each one.
+## Required references
 
-### If no project files exist yet
-The first time a project has substantial confirmed content (real Decisions, Requirements, or Glossary entries — not just a couple of stray bullets) and no existing project files, ask the user once: would they like a structured local file corpus generated from what's confirmed so far — a Glossary file, a Decisions Log, an Open Questions file, mirroring the same categories used on the main page — which then gets mirrored to Confluence the same way an existing file would be? This creates real, standing files in their project directory, so it needs an explicit yes, not a silent default. Ask only once per project — remember the answer (store it alongside the target lock in .claude/push-target.local.json, e.g. { "fileCorpusOffered": true, "fileCorpusAccepted": true|false }) so it never re-asks on later pushes.
+Read these before the relevant phase:
 
-- If yes: write the generated files into the project directory (default to a clearly-named subfolder, e.g. push-context/, unless the user specifies otherwise), then mirror them to Confluence exactly as described above. From then on, treat this project as a "has files" project going forward: newly confirmed Decisions/Requirements/etc. get written into both the relevant local file and the Confluence page on every push, not just added as bare bullets on the page alone — local files and Confluence stay in sync together, the same as any other mirrored file.
-- If no, or the confirmed content is still too thin to be worth structuring: continue exactly as today — one synthesized page, nothing generated, no dependency introduced. This can be revisited later if the user explicitly asks for it, even if declined once.
+1. `references/discovery.md`
+2. `references/confirmation.md`
+3. `references/knowledge-model.md`
+4. `references/reconciliation.md`
+5. `references/project-files.md`
+6. `references/publishing.md`
+7. `references/voice.md`
+8. configured destination adapter — for Confluence, `references/destinations/confluence.md`
 
-## Project Files (only when project files exist — omit this whole section otherwise)
-A table: File | Why it matters | Link — one row per mirrored file, linking to its child page. Keep "why it matters" to a short sentence, like a real handoff document's reading guide, so a reader can decide what to open first rather than having to open everything. Add a row the first time a file is mirrored; a row's link stays the same across re-mirrors (the child page is updated in place, not recreated). Project Files and Linked Resources are different things: Project Files always mirrors a project's own document in full onto a child page; Linked Resources only ever points outward (external tools, other projects' pages) and never mirrors content. Don't create this section, or an empty table, for a project with no files to mirror.
+These references are part of the skill contract, not optional background reading.
 
-## Confirmation test
-Extract an item only if it passes the check below, applied individually to each candidate. What counts as "confirmed" differs for Open Questions versus every other category — see the branch below.
+## Run shape
 
-For Proposals, Decisions, Requirements, Architecture & Cross-Impact, Research & Findings, Glossary / Key Terms — passes if either:
-- A human participant asserted it in conversation, not the assistant — stated as settled fact, an instruction to proceed, or an explicit rejection, not a hypothesis or one of several options still being weighed, with nothing about its status still visibly open (no unresolved follow-up, no "but let's check X first"); or
-- It is stated in a current, authoritative project file (per Sources and freshness above) — cite the exact file. Prefer the freshest source when a file and the conversation, or two files, conflict; carry over any caveat the source itself states (e.g. "unverified," "not yet re-confirmed") rather than dropping it.
+### Step 0 — resolve destination and capability
 
-For Open Questions — passes if:
-1. A human participant genuinely raised it as a real, unresolved concern — sincerely, not rhetorically.
-2. It has not been answered or withdrawn later in the conversation (if it later got resolved, it belongs in Decisions/Requirements instead, not here).
+Read the configured destination adapter.
 
-A sincerely-raised, still-unanswered question always qualifies for Open Questions — it does not need to also pass the stricter test above, because being unresolved is the point of this category, not a disqualifier.
+For Confluence:
 
-A human assertion can take any of these forms — there is no required phrasing:
-- A direct statement of fact or instruction ("we're doing X," "go with B," "yes," "ship it").
-- An explicit rejection ("no, don't do X," "skip that") — record this as a decision in the negative, not as a non-event.
-- A later message that treats an earlier point as settled without a discrete confirming reply (e.g. building the next question on top of it as given fact).
-- Partial agreement — if the human affirms only part of a multi-part suggestion, extract only the affirmed part.
+- reuse the existing target lock when present;
+- verify the target page can be read;
+- verify the environment has the capabilities required to update it;
+- if there is no target, resolve it using the adapter rules;
+- never retarget from a merely mentioned link.
 
-Fails if:
-- It originated from the assistant and the human never took it up as their own — regardless of how reasonable it sounded.
-- It's hypothetical, exploratory, or explicitly framed as one option among several still under consideration.
-- The conversation moved on without the human engaging with it at all.
-- It's ambiguous whether a human actually asserted it. Default to exclusion on ambiguity — a missing item is fixed on the next push; a wrongly-included one erodes trust in the whole page.
+If the destination cannot be used, stop before expensive extraction and explain the concrete blocker.
 
-## Why this needs real judgment, not keyword-matching
-Being conservative about what qualifies doesn't mean being lazy about how it's recorded:
-1. When something does pass the confirmation test with real specifics — systems affected, numbers, names — don't flatten it into something vague. That specificity is exactly what's easy to lose in a casual summary; keep it.
-2. Contradiction-checking runs against the whole page, not just the matching section — a newly-confirmed decision can invalidate something recorded elsewhere days ago, which is why step 1 of the Procedure always fetches the whole page first.
-3. The messiest, busiest conversations are also the ones most likely to contain something genuinely decided in passing — catching that reliably, every time, matters more here than in an easy, slow-moving session.
-4. A sparse but fully-accurate page is more valuable than a rich one where part of it was never actually confirmed by anyone — trustworthiness beats completeness.
+### Step 1 — read existing durable state first
 
-## Edge cases
-- Reversal within the same conversation: if a human later contradicts something they themselves confirmed earlier, the later statement wins. Treat it as superseding the earlier one (old value → Deprecated), not as a conflict to flag.
-- Relayed third-party content: a human pasting an email, spec excerpt, or quote is introducing a source, not confirming a decision. File it under Research & Findings unless the human separately asserts a conclusion drawn from it.
-- Multiple human participants disagreeing: if two people in the conversation assert conflicting things and neither is resolved, this is not confirmed either way — record it as an Open Question, not a Decision.
-- Sarcasm, rhetorical questions, or clearly informal asides: apply ordinary judgment about sincerity; don't extract language that wasn't meant as a real assertion.
-- A confirmed decision that reverses something already on the Confluence page from a prior push: this is a normal "change" in the diff step (old → Deprecated) — it is not a special case, just note it plainly in the write-up.
-- Nothing from either source passes the test: this is an expected, healthy outcome for early-stage or exploratory sessions — report "nothing new to push" and stop. Do not lower the bar to have something to write.
-- A quiet conversation is not by itself a reason to skip checking project files. A file can change with zero chat activity, and that alone is a fully sufficient reason to push. Never conclude "nothing to push" from the conversation being quiet without independently checking whether any project file has new confirmed content the page doesn't have yet — the two checks are separate and both required, every run, regardless of how much (or how little) was said in chat.
+Fetch the whole destination page before deciding what changed.
 
-## Target resolution (ask once, then lock it in per project)
-1. Look for a lock file at .claude/push-target.local.json in the current working directory.
-2. If it exists: read cloudId and pageId and use that as the target. Do not ask again, and do not retarget based on a link merely mentioned in conversation — only on an explicit request to retarget.
-3. If it does not exist:
-   - Use a Confluence page URL/ID if the user supplied one as an argument to this invocation.
-   - Otherwise, ask: "Which Confluence page should /push update for this project?" — do not guess.
-   - Resolve the cloudId (a site hostname works, e.g. arenasolutions.atlassian.net), call getConfluencePage once to confirm the page exists and is writable, and show the user its title.
-   - Write .claude/push-target.local.json with { "cloudId": "...", "pageId": "...", "title": "...", "lockedAt": "<ISO date>" } so every future /push in this project directory reuses it silently.
-4. Change an existing lock only on an explicit user request to retarget.
+Also discover Walnut-managed child pages and any existing Project Files mappings that can be recovered.
 
-## Categories
-Every category is subject to the confirmation test above, and every entry is written in full detail per Purpose — a complete, self-contained account of that item, not a headline pointing back at a conversation the reader doesn't have.
+If this is an existing Walnut project, preserve its current records and IDs. A plugin upgrade is never a reason to rebuild the page.
 
-Order matters and is deliberate, listed below in the order they should appear on the page: settled, actionable content (Glossary, Decisions, Requirements, Open Questions, Architecture & Cross-Impact) comes first, because a reader landing cold wants to know what's actually true and unresolved before wading into supporting material. Exploratory/supporting content (Proposals, Research & Findings) comes after. Linked Resources and Deprecated are always last.
+### Step 2 — discover project sources
 
-- Glossary / Key Terms — a one-time, fuller definition of a recurring project-specific term, name, or artifact (e.g. a named screen, system, or concept that gets referenced more than once), for a reader who wants more depth than a single entry needs to give. This is not license for other entries to skip grounding themselves. Every entry that mentions a retired, renamed, or non-obvious term must still give enough inline context on its own — what the thing was, why it changed — to be understood without the reader having to go find the Glossary. Add a term here the first time it's confirmed and needs explaining; update it here if its meaning changes. When a term has been renamed or has changed meaning over the project's life, capture both the current name/meaning and what it used to be called or mean, with roughly when the change happened. A reader hitting the old term somewhere else — an older file, an earlier conversation — needs to be able to map it forward; a glossary that only ever shows the current state can't do that.
-- Decisions — something confirmed as final about the product, including explicit rejections. State plainly and completely what was decided, self-contained enough for a reader with no conversation or file context to understand — define any project-specific or retired/renamed term in the same bullet, don't rely on the Glossary to carry that weight. Tag every Decision with how firm it actually is — never state one without this qualifier: Decided (settled and already built/implemented) · Decided, not built (settled in principle, no implementation yet) · Agreed in principle (direction accepted, the actual mechanism still open) · Working decision (the current answer, but not yet confirmed by whoever has final authority — e.g. engineering). This is the difference between something a reader can rely on outright and something they need to double-check before quoting elsewhere; collapsing all of these into one undifferentiated "Decided" would be a real loss of information the source usually already gives you. Give the rejected alternative the same care as the decision itself, not a one-line footnote — the reasoning for what wasn't chosen, and why, is often what prevents the same idea from being re-proposed and re-rejected later; include it whenever the source gives it (a human's own words, or an authoritative file), in full, not compressed to an afterthought clause. Attribute and date it whenever the source allows: if a specific person is identifiable as the one deciding (not just "the user" generically) and a date is available (today's date, or a file's own modified date), include both — this is what lets a docs writer or leadership follow up with the right person, and what lets anyone later place the decision correctly in the project's actual timeline rather than relative to whichever push happened to record it. Give it a short stable ID (e.g. D1, D2, continuing the sequence already on the page) so other entries — and future pushes — can reference it precisely instead of re-describing it in prose; once assigned, an ID is never reused or renumbered, even if the decision it names is later superseded. Exclude prototype/demo-implementation mechanics — a specific variable, file, or data-structure name in a prototype's code, or which mock screen happened to get rewired, is build trivia, not a product decision. If a genuine product-level principle sits underneath a prototype fix, record that principle, in product terms, not the prototype's internals (e.g. "a live record must always reflect current configuration, never a disconnected copy" — not the name of the data structure a demo reads that from).
-- Requirements — a concrete, confirmed spec about the product, sourced from conversation or a current authoritative project file, not something still being explored. Write the full spec, not a one-line label for it. Give it a short stable ID (e.g. R1, R2) the same way Decisions do, for the same reason — precise cross-referencing instead of prose re-description. Same exclusion as Decisions: a prototype's internal implementation details are not a product requirement.
-- Open Questions — a genuinely unresolved question about the product or project itself — something a human posed as unresolved, or an unresolved disagreement between participants. Never a question the assistant invented. Never about this page's own upkeep, session or tooling mechanics, or a caveat already properly carried in Research & Findings — reconciling stale project files, verifying a citation, or working around a tool's sharing limitations are page-maintenance or session trivia, not open questions about the product; recording them here misleads a reader into thinking the project has unresolved design questions when it's actually just this page's bookkeeping that's unfinished. If the project maintains its own file whose whole purpose is tracking open questions, mirror that file in full instead (see Project file mirroring) rather than re-extracting or duplicating its contents here — link to the mirrored page, and only add genuinely new questions raised in this conversation that aren't in it yet. Include enough of the actual question and its context that someone unfamiliar with the conversation could attempt to answer it. State who actually resolves it, whenever the source indicates this — a specific person, a role (design, engineering, PM), or a combination ("PM + engineering") — this is what tells a reader exactly who to go to instead of just that something is unresolved. Give it a short stable ID (e.g. Q1, Q2) for the same cross-referencing reason as Decisions and Requirements. Order by how expensive each one is to get wrong, not by when it was raised — a question that's cheap to leave open belongs after one where the wrong guess is costly to undo, regardless of which came up first in conversation.
-- Architecture & Cross-Impact — cross-cutting impact on the product itself: which other product systems, features, teams, or in-flight projects are affected, and how — a human explicitly confirmed or flagged this, or a current authoritative file documents it, never the assistant's inference that something sounds cross-cutting. Name the specific systems/teams/projects affected, not a vague "this touches other things." When the affected system is another project that also has its own /push-maintained Confluence page, add a row for that page in Linked Resources and reference it from here — a reader should be able to click through to that project's own source of truth, not just take the cross-impact on faith from prose. This category is never about this page's own upkeep — whether a project file is stale, needs reconciling, or contradicts a decision here is not product architecture. If that's worth recording at all, it's a brief aside inside the specific Decision/Requirement it relates to, or an Open Question if someone needs to act on it — never its own Architecture & Cross-Impact entry.
-- Proposals — an idea the user is explicitly putting forward for consideration, not yet decided. Never something the assistant suggested. Include the actual substance of the proposal, not just its existence.
-- Research & Findings — a finding, source, or piece of data the user introduced or confirmed as worth keeping, or one documented in a current authoritative project file. Not a passing citation made only to support a different point. Describe what was found and how, in enough detail that someone acting on it doesn't need to go find the original investigation. If a finding is really a set of discrete named data points (e.g. several distinct metrics each with a value and a note), format it as a table or list, never as one dense paragraph — this applies even when that data moved here from elsewhere (e.g. a retired Metrics category); the destination category never excuses losing the structure the content actually has. When a finding has several parts, structure it as: the single most important takeaway stated first in one sentence, then the supporting detail, then — if the source itself draws one — a short synthesis of what it means for the project. A flat list of facts with no lead and no "so what" makes a reader do the synthesis work themselves; do it once, here, instead of leaving it as an exercise every time someone reads the page.
-- Linked Resources — a table (Type | Label | Link | Summary | First referenced), not prose bullets. Include a link only if (a) a human explicitly wants it kept as a reference, and (b) it actually resolves. Mark a "living source" distinctly from an ordinary reference: if something (a maintained Confluence page elsewhere, a roadmap tool, a recording index) updates faster than this page ever will and is the actual current truth on a topic, say so explicitly in the Summary ("this is the live version — check it rather than trusting this page on this topic") rather than letting it read as just another link. This page is a synthesis, not a replacement for a source that moves faster than pushes happen. This includes other projects' own /push-maintained Confluence pages when a cross-project impact is mentioned in Architecture & Cross-Impact — link to the actual page, don't just describe the impact in prose. If a tool is available to check the link this run (a fetch, a browser check, an API lookup like getJiraIssue), actually check it — don't just note that accessibility is uncertain and include it anyway. A link confirmed broken, 404, or otherwise dead does not belong in this table at all, caveat or not — a non-working link is not a resource, it's noise with an apology attached. If a confirmed-broken link still matters (e.g. it needs to be replaced), that's an Open Question ("this link is dead and needs a working replacement"), not a table row. If the link can't be checked this run at all, say so plainly in the Summary rather than presenting it as an ordinary open link. Be selective — don't capture every URL mentioned. If the link is a Jira issue or a Figma file and those tools are available, do one quick lookup to fill Summary with something real — a title, a status — rather than leaving a bare URL.
-- Deprecated — never extracted from chat directly; only populated by the merge step when something confirmed here supersedes something already on the page. Always last.
+Read `references/discovery.md` and `references/project-files.md`.
 
-This list is a default, not a ceiling: create a new top-level category (inserted after Architecture & Cross-Impact and before Proposals if it's settled/actionable content, or before Deprecated if it's exploratory/supporting content, matching the ordering rationale above) for a genuine new kind of confirmed content, and say so explicitly in the report-back. Don't create a near-duplicate of an existing category, and don't spin up a heading for a one-off aside.
+Inspect every configured source class independently:
 
-When a category grows very large (rule of thumb: several dozen entries, or it's become hard to skim in one screen), split it into its own child Confluence page (createConfluencePage with this page as parentId), and replace it on the main page with a one-line pointer and a real link to the child page. This keeps the main page navigable as a project runs for months without ever losing detail — content is relocated, never summarized away or dropped. Still apply every rule above (confirmation test, format-follows-content, attribution) on the child page exactly as if it were still part of the main one.
+- the current conversation available to the host AI;
+- current project-context files and other relevant readable project documentation;
+- the current durable destination;
+- additional explicitly configured sources, when any.
 
-Cross-references between entries on this page use the entry's stable ID plus a real Confluence anchor link, not prose pointers. Instead of "see the earlier decision about X," write "see D3" with an actual anchor link to it, so a reader can click straight there instead of scrolling to find it or guessing which entry is meant.
+If a checkpoint exists, use it to avoid unnecessary rereading, but fall back to full reconciliation whenever the state is incomplete, contradictory, migrated from an older Walnut version, or otherwise uncertain.
 
-Metrics is deliberately not a default category. This file covers a project from conception through build, before release — product metrics (usage, adoption, performance) don't genuinely exist yet at that stage, and a default category invites filling it with unrelated numbers just because they were mentioned (this happened once already). If the project reaches a phase where a human confirms a real, trackable metric worth recording, create Metrics then, as a new category, under the same rule as any other.
+Do not confuse file modification time with claim freshness.
 
-## Procedure
-1. Fetch the whole page first, via getConfluencePage (contentFormat: html), before reading the conversation. Every later step is relative to this, not to a blank slate.
-2. Mirror project files before treating them as a source for anything else. For every project file confirmed current/authoritative this run, check whether a child page already mirrors it and whether the file has changed since it was last mirrored — create or re-mirror as needed (see Project file mirroring), and update the Project Files index. If the project has no files and hasn't yet been asked about generating some, and this run has substantial confirmed content, make the offer once (see "If no project files exist yet") before continuing. Do this before citing or extracting from any file, so its full content is already reachable on Confluence by the time anything references it.
-3. Build an extraction ledger before filtering anything, covering both sources. Read the entire conversation from its start, not just recent messages — this includes questions raised early that were never revisited, the easiest thing to lose if only recent messages get attention. Also check the project's own files: identify which are current/authoritative and check their modification timestamps against the conversation to see which is fresher on each topic (see Sources and freshness). List every candidate item from both sources, each with a short quote/paraphrase and its source (a specific message, or a specific file). Include the Project Overview as a candidate too — if anything confirms or changes the project's stated purpose, goal, or phase, list it here exactly like any other candidate. Do this listing pass in full before applying the confirmation test to any of it — keep listing and filtering as two separate steps, not one.
-4. Apply the confirmation test to each ledger entry individually, using the correct branch (Open Questions vs. everything else). Discard anything that fails. Keep the ones that pass, with their category.
-5. Specifically re-check the ledger for unresolved questions, independent of whatever else was found: any sincerely-raised human question with no later answer or withdrawal goes to Open Questions, regardless of how early in the conversation it appeared or whether it seems to have been forgotten since. If a mirrored file already covers the project's open questions in full, don't re-extract them here — link to it instead (see Project file mirroring and the Open Questions category rule).
-6. Diff each surviving candidate against the live page:
-   - Not present anywhere on the page → addition.
-   - Contradicts or supersedes something already on the page, in any section → change (old value moves to Deprecated). For a Linked Resources row, an updated Summary/status for a URL already in the table counts as a change to that row, not a new row. For the Project Overview, a changed purpose or phase replaces the relevant part of that paragraph directly (Project Overview is prose, not bullets, so there's nothing to move to Deprecated — the old wording simply isn't current anymore).
-   - Narrows or adds a condition to an existing item without contradicting it → refinement, appended to the existing bullet/row in place.
-   - Already present, same substance → discard, not an update.
-7. Stop if nothing survived the diff. Do not call updateConfluencePage. Report "nothing new to push" and briefly say why.
-8. Otherwise, merge: update in place where superseded (moving the old value to Deprecated, never deleting), append refinements to the item they clarify, append new items to the correct category, leave everything else untouched.
-9. Structure the page using the categories above, plus any already present from prior pushes, plus any new category created this run, inserted before Deprecated.
-10. Guard against a concurrent edit: immediately before writing, compare the version you read in step 1 against the current version. If it changed, re-fetch and redo steps 3–9 against the current content before retrying the write once.
-11. Write it back via updateConfluencePage, with a version message naming what changed.
-12. Report to the user: exactly what was added, changed, refined, or deprecated (or the "nothing new" outcome and why), and which files (if any) were newly mirrored or re-mirrored this run. No need to enumerate what was excluded for failing the confirmation test — just report what was actually written.
+### Step 3 — build the candidate ledger
 
-## Rules
-- Write every entry as a complete, self-contained record — someone with no access to this conversation or these project files must be able to act on the page alone.
-- Format follows the shape of the content, not the category it lives in: a set of discrete named data points is a table or list, never a dense paragraph, regardless of which category it ends up in.
-- Any HTML table written to the page has exactly one header row — check for accidental duplication before writing.
-- Never fabricate content to fill an empty category.
-- Never delete historical content; move it to Deprecated instead.
-- Never attribute assistant-originated content to the user, regardless of which AI tool is running this skill.
-- Never invent or reconstruct how a decision was reached — but when the source (a human's own words, or an authoritative file) states its reasoning, include that reasoning in full.
-- Cover both sources every run: the conversation in full from its start, and any current, authoritative project files, using recency to resolve conflicts between them. Never conclude "nothing to push" from a quiet conversation alone — a project file changing with zero chat activity is sufficient on its own to trigger a push.
-- Be selective with links specifically: durable and realistically accessible, not exhaustive.
-- Default to exclusion whenever confirmation is ambiguous.
-- Attribute and date entries whenever the source allows it, especially Decisions — a name and a date are what let someone follow up with the right person and place the entry in the project's real timeline.
-- Keep settled content (Glossary, Decisions, Requirements, Open Questions, Architecture & Cross-Impact) ahead of exploratory/supporting content (Proposals, Research & Findings) in page order; Linked Resources and Deprecated always last.
-- Link out to another project's own page instead of only describing cross-project impact in prose; link internally with real anchors instead of prose pointers like "see X."
-- If a category becomes too large to skim, move it to a child page and point to it — never let that be a reason to summarize or drop detail.
-- Never state a Decision without its firmness qualifier (Decided / Decided, not built / Agreed in principle / Working decision) — collapsing that gradient into a flat "Decided" throws away real information.
-- State who resolves an Open Question whenever the source says so; give Decisions, Requirements, and Open Questions stable IDs (D1, R1, Q1…) that are never reused or renumbered.
-- Give a rejected alternative the same weight as the decision itself — full reasoning, not a footnote.
-- Track terminology drift in the Glossary (old term/meaning → current one, roughly when it changed), not just current definitions.
-- Distinguish a "living source" that updates faster than this page from an ordinary reference link.
-- Mirror project files as child pages in full when they exist. If none exist yet and there's substantial confirmed content, offer once to generate a structured file corpus rather than silently doing nothing forever — but never create those files without an explicit yes, and never ask twice.
-- Open Questions is never about this page's own upkeep, session mechanics, or an already-caveated citation — only genuine unresolved product/project questions belong there, and a project's own open-questions file should be mirrored in full rather than re-extracted.
+Before filtering, list every plausible project-knowledge candidate and its provenance.
+
+Include Project Overview changes in this pass.
+
+A candidate should carry enough information to identify:
+- its substance;
+- likely category;
+- source;
+- who asserted it when known;
+- when it was asserted/observed when known;
+- supporting or conflicting evidence.
+
+Do not publish anything yet.
+
+### Step 4 — confirm and classify
+
+Read `references/confirmation.md` and `references/knowledge-model.md`.
+
+Apply the confirmation policy to every candidate individually.
+
+Assistant-originated ideas do not become durable project truth unless a human adopts them.
+
+Human rejections count.
+
+Partial acceptance only confirms the accepted portion.
+
+Open Questions use their own unresolved-human-question rule.
+
+When confirmation is ambiguous, exclude rather than guess.
+
+Walnut may synthesize a Project Overview from multiple confirmed facts only when the synthesis introduces no new factual claim.
+
+### Step 5 — reconcile with existing state
+
+Read `references/reconciliation.md`.
+
+Compare confirmed candidates against the whole durable record by substance.
+
+For each candidate choose one semantic outcome:
+
+- add;
+- refine;
+- supersede;
+- resolve;
+- no-op;
+- surface conflict.
+
+Equivalent wording is a no-op.
+
+Recency is evidence, not an automatic winner.
+
+For existing Walnut projects:
+- keep existing D/R/Q IDs;
+- continue their sequences;
+- reuse recoverable child-page mappings;
+- do not duplicate unchanged records;
+- do not wipe or rebuild the destination merely to adopt v0.2 internal state.
+
+### Step 6 — decide context-file behavior
+
+Read `references/project-files.md`.
+
+If meaningful current context files exist, use them. Do not replace them with a Walnut-owned fixed corpus.
+
+If meaningful context files do not exist and the project now contains substantial confirmed context, make the one-time offer for the **host AI** to create project-appropriate context docs.
+
+Never create those files without explicit approval.
+
+If the offer was declined previously, do not ask again unless the person explicitly revisits the choice.
+
+Reading a file and mirroring a file are separate decisions.
+
+Mirror only eligible context documents. Existing child mirrors are grandfathered and should be reused rather than recreated.
+
+### Step 7 — prepare the destination diff
+
+Render only the semantic actions produced by reconciliation.
+
+Keep the durable record self-contained and neutral.
+
+Use the category and ID rules from `references/knowledge-model.md`.
+
+Preserve source-provided reasoning, specificity, names, dates, affected systems, and important rejected alternatives.
+
+Do not invent rationale.
+
+Do not delete history because wording changed.
+
+### Step 8 — concurrency guard and publish
+
+Read `references/publishing.md`.
+
+Immediately before writing, confirm the destination revision has not changed since reconciliation.
+
+If it changed:
+- refetch;
+- reconcile again;
+- retry once.
+
+If it changes again, stop instead of overwriting unknown work.
+
+If there is no semantic change and no eligible mirror update, do not write.
+
+### Step 9 — mirror eligible files
+
+Create or update child pages only for files that pass the mirroring policy.
+
+A mirror failure does not invalidate the local file as a source.
+
+Do not delete an existing child page merely because v0.2 would not choose to create that mirror from scratch today.
+
+### Step 10 — verify
+
+After any destination write, read the destination again.
+
+Verify:
+- expected additions/refinements/supersessions/resolutions are present;
+- unchanged records remain;
+- unrelated content was not removed;
+- existing child-page mappings remain valid unless intentionally changed.
+
+A write is not complete until verification passes.
+
+### Step 11 — checkpoint
+
+After a successful verified reconciliation, update private Walnut project state with the information needed for the next run, such as:
+
+- destination identity/version;
+- source fingerprints;
+- last successful checkpoint;
+- context-file offer status;
+- mirror mappings;
+- internal identity mappings when supported.
+
+Keep this state private and uncommitted.
+
+The existing `.claude/push-target.local.json` format remains supported for backward compatibility.
+
+### Step 12 — report
+
+Use `references/voice.md`.
+
+Report what actually changed:
+- added;
+- refined;
+- superseded;
+- resolved;
+- mirrored/re-mirrored.
+
+Do not dump the excluded candidate ledger.
+
+If nothing changed:
+
+> nothing new stuck. left the page alone.
+
+## Non-negotiables
+
+- Never turn an unconfirmed assistant suggestion into project truth.
+- Never infer a decision merely because it sounds sensible.
+- Never let a quiet chat skip the project-file check.
+- Never use timestamps alone to decide truth.
+- Never reset an existing Walnut destination during a version migration.
+- Never renumber existing human-facing IDs.
+- Never mirror every readable file by default.
+- Never let mirror failure prevent a valid source from informing reconciliation.
+- Never fabricate content to make the destination look complete.
+- Never overwrite a concurrent edit without reconciling again.
+- Never report a write as successful without reading it back.
