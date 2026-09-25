@@ -1,0 +1,14 @@
+{
+  "actions": [
+    {
+      "type": "supersede",
+      "existing": "D1",
+      "replacement": "Comments are optional on approval"
+    },
+    {
+      "type": "add",
+      "category": "requirements",
+      "candidate": "A comment is required on rejection"
+    }
+  ]
+}

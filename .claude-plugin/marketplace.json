@@ -8,7 +8,7 @@
     {
       "name": "push",
       "source": "./plugins/push",
-      "description": "Extract finalized decisions, requirements, open questions, and metrics from the current chat and sync them into a shared Confluence page, so any AI chat tool reading that page gets current project context."
+      "description": "Listen across AI conversations and project context, separate confirmed truth from exploration, and keep a shared project record current without duplicating or wiping history."
     }
   ]
 }

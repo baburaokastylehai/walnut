@@ -1,0 +1,14 @@
+{
+  "project_files_present": false,
+  "actions": [
+    {
+      "type": "offer_context_files",
+      "reason": "substantial confirmed project context exists and the project has no meaningful context documents"
+    }
+  ],
+  "constraints": [
+    "do not create files without explicit approval",
+    "ask only once per project unless the person later revisits the choice",
+    "the host AI creates project-appropriate docs rather than Walnut forcing a fixed corpus"
+  ]
+}
