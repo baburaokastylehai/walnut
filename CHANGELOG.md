@@ -4,23 +4,29 @@ All notable Walnut changes are recorded here.
 
 Walnut follows Semantic Versioning during the pre-1.0 phase.
 
-## [Unreleased — v0.2.0]
+## [0.2.0] — 2026-09-25
 
-### Planned
+### Added
 
-- separate source discovery, confirmation, reconciliation, publishing, and destination-specific policy;
-- keep `SKILL.md` as the workflow conductor rather than the full policy corpus;
-- add a lightweight internal ledger for identity, provenance, fingerprints, and checkpoints;
-- preserve human-facing D/R/Q identifiers while introducing stable internal identity;
-- make recency a reconciliation signal rather than an automatic source winner;
-- separate ingest from file mirroring;
-- make mirroring selective and safety-aware;
-- preserve the conditional host-LLM context-file creation flow;
-- introduce incremental checkpoints with full reconciliation as a recovery path;
-- abstract destination behavior, with Confluence as the first adapter;
-- add semantic eval fixtures and gates;
-- add verification after destination writes;
-- adopt Walnut's product voice for user-facing interaction while keeping durable records neutral.
+- source discovery, confirmation, reconciliation, publishing, and destination-specific policy are separated into focused references;
+- `SKILL.md` now acts as the workflow conductor rather than the full policy corpus;
+- v0.2 preserves existing Walnut pages, D/R/Q identifiers, and recoverable child-page mappings during migration;
+- recency is treated as a reconciliation signal rather than an automatic source winner;
+- ingest and file mirroring are separate decisions;
+- mirroring is selective and safety-aware;
+- the conditional host-LLM context-file creation flow is preserved;
+- checkpoint-based incremental reconciliation is defined, with full reconciliation as the recovery path;
+- Confluence is isolated as the first destination adapter rather than the product ontology;
+- publication uses concurrency protection and post-write verification;
+- Walnut voice is separated from neutral durable-record voice;
+- semantic eval fixtures cover core confirmation, reversal, context-file, and existing-project migration behavior;
+- repository validation checks manifests, required references, fixtures, version metadata, and private-state protection.
+
+### Changed
+
+- plugin version is now `0.2.0`;
+- marketplace positioning reflects Walnut's broader project-context role;
+- README documents upgrade behavior for existing Walnut projects.
 
 ## [0.1.0] — 2026-09-22
 
