@@ -1,7 +1,7 @@
 {
   "name": "push",
-  "version": "0.1.0",
-  "description": "Extract finalized decisions, requirements, open questions, and metrics from the current chat and sync them into a shared Confluence page.",
+  "version": "0.2.0",
+  "description": "Keep durable project context straight across AI conversations, project files, and a shared destination by publishing only confirmed, reconciled changes.",
   "author": {
     "name": "Atharva Shembekar",
     "email": "ashembekar@ptc.com"
