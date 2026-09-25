@@ -30,11 +30,12 @@ Read these before the relevant phase:
 1. `references/discovery.md`
 2. `references/confirmation.md`
 3. `references/knowledge-model.md`
-4. `references/reconciliation.md`
-5. `references/project-files.md`
-6. `references/publishing.md`
-7. `references/voice.md`
-8. configured destination adapter — for Confluence, `references/destinations/confluence.md`
+4. `references/categories.md`
+5. `references/reconciliation.md`
+6. `references/project-files.md`
+7. `references/publishing.md`
+8. `references/voice.md`
+9. configured destination adapter — for Confluence, `references/destinations/confluence.md`
 
 These references are part of the skill contract, not optional background reading.
 
@@ -95,7 +96,7 @@ Do not publish anything yet.
 
 ### Step 4 — confirm and classify
 
-Read `references/confirmation.md` and `references/knowledge-model.md`.
+Read `references/confirmation.md`, `references/knowledge-model.md`, and `references/categories.md`.
 
 Apply the confirmation policy to every candidate individually.
 
