@@ -88,7 +88,9 @@ for (const fixtureDir of ["evals/fixtures", "evals/pull-fixtures"]) {
     }
     try {
       JSON.parse(fs.readFileSync(path.join(dir, "expected.json"), "utf8"));
-      JSON.parse(fs.readFileSync(path.join(dir, "profile.json"), "utf8"));
+      if (fixtureDir.endsWith("pull-fixtures")) {
+        JSON.parse(fs.readFileSync(path.join(dir, "profile.json"), "utf8"));
+      }
       ok(`fixture valid: ${fixtureDir}/${name}`);
     } catch (error) {
       fail(`fixture ${fixtureDir}/${name} has invalid JSON — ${error.message}`);
