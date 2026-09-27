@@ -1,0 +1,16 @@
+{
+  "mode": "first_pull",
+  "must_cover": [
+    "the problem being solved in Arena Change Management",
+    "the modular Process Flow direction",
+    "current status and unresolved migration behavior",
+    "designer-relevant workflow and state implications",
+    "required-fields configuration as user-visible behavior"
+  ],
+  "must_not": [
+    "lead with D/R/Q identifiers",
+    "invent UI layouts",
+    "invent implementation architecture",
+    "present the unresolved migration behavior as decided"
+  ]
+}

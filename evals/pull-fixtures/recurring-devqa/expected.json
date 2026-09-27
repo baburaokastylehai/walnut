@@ -1,0 +1,27 @@
+{
+  "mode": "recurring_pull",
+  "updates": [
+    {
+      "id": "D2",
+      "relevance": "for_you",
+      "reason": "changes observable approval/rejection behavior"
+    },
+    {
+      "id": "R2",
+      "relevance": "for_you",
+      "reason": "adds a concrete validation condition QA and implementation must account for"
+    },
+    {
+      "id": "D3",
+      "relevance": "project_visibility",
+      "reason": "meaningful project movement but not directly actionable for dev/QA"
+    }
+  ],
+  "unchanged": ["D1", "R1", "Q1"],
+  "constraints": [
+    "role-relevant changes appear first",
+    "do not repeat the full project onboarding",
+    "do not hide D3 entirely",
+    "do not invent implementation details"
+  ]
+}

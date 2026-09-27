@@ -1,0 +1,13 @@
+{
+  "target": {
+    "cloudId": "example",
+    "pageId": "123"
+  },
+  "role": "developer + QA",
+  "lastPulledAt": "2026-09-26T13:00:00Z",
+  "seen": {
+    "D1": "process-flow-hides-conventional-approvals",
+    "R1": "required-fields-configurable-by-category",
+    "Q1": "migration-existing-categories-open"
+  }
+}

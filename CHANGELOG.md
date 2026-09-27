@@ -1,5 +1,19 @@
 # Changelog
 
+## [pull 0.1.0] — Unreleased
+
+### Added
+
+- new `pull` plugin for team-side consumption of Walnut's shared project context;
+- first-use role onboarding for design, dev/QA, technical writing, PM, and free-text roles;
+- full first-pull project briefing in Arena/product language;
+- per-person local checkpoints for recurring pulls;
+- semantic change detection so recurring pulls show what changed rather than repeating the whole project;
+- role-aware relevance: for you, needs attention, and project visibility;
+- read-only Confluence consumption;
+- pull-specific semantic fixtures for first use, designer onboarding, recurring dev/QA updates, and no-change runs.
+
+
 All notable Walnut changes are recorded here.
 
 Walnut follows Semantic Versioning during the pre-1.0 phase.

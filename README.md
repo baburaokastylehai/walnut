@@ -2,13 +2,23 @@
 
 your project gets messy. walnut keeps the part that matters.
 
-Walnut is a Claude Code plugin marketplace containing one plugin: **`push`**.
+Walnut is a Claude Code plugin marketplace with two complementary plugins: **`push`** and **`pull`**.
 
-## What `push` does
+## `push` — keep the project brain current
 
 `/push` listens across the current AI conversation, project-context files, and an existing shared destination. It separates confirmed project truth from brainstorming, assistant suggestions, stale context, and duplicates; reconciles what changed; and publishes only the durable updates that actually belong in the project record.
 
 Confluence is the first supported destination.
+
+## `pull` — get caught up
+
+`/pull` reads that same shared project context for the people working on the project.
+
+On first use, it asks what role you are playing — design, dev/QA, technical writing, PM, or something else — then explains the problem, current solution, project status, and the parts that matter most to you.
+
+On later uses, it compares the current project brain with what you last saw and reports only meaningful updates. Role-relevant changes come first; important project-wide changes still appear for visibility.
+
+`/pull` is read-only against the shared project brain. It keeps only a local per-person checkpoint so each teammate can ask, "what changed since I last checked?"
 
 Walnut is designed to preserve existing project history. Upgrading the plugin does not reset an existing Walnut page, renumber its D/R/Q records, or recreate child pages just because the version changed.
 
@@ -32,6 +42,7 @@ In Claude Code:
 
     /plugin marketplace add baburaokastylehai/walnut
     /plugin install push
+    /plugin install pull
 
 If you already have the plugin installed, update the marketplace/plugin in Claude Code before running `/push` so it loads the latest version from `main`.
 

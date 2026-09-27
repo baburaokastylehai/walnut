@@ -9,6 +9,11 @@
       "name": "push",
       "source": "./plugins/push",
       "description": "Listen across AI conversations and project context, separate confirmed truth from exploration, and keep a shared project record current without duplicating or wiping history."
+    },
+    {
+      "name": "pull",
+      "source": "./plugins/pull",
+      "description": "Read Walnut's shared project context and turn it into a role-aware briefing, then show only meaningful changes on later pulls."
     }
   ]
 }

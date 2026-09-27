@@ -35,8 +35,18 @@ not another project document
 publish / mirror
 ────────────────────────────────────
 
+shared project brain
 Confluence first
 other destinations later
+
+                ↓
+
+              pull
+
+read shared state
+compare with personal checkpoint
+apply role lens
+brief what changed
 ```
 
 Walnut's intelligence lives in the middle.
@@ -368,3 +378,34 @@ skills/push/
 `SKILL.md` should be the conductor.
 
 Detailed policy belongs in focused references that are loaded when relevant.
+
+
+## Pull architecture
+
+`pull` is a read-only consumer of the shared Walnut project brain.
+
+It keeps per-person state locally rather than writing consumption metadata into the shared destination.
+
+```text
+shared project brain
+        +
+local pull profile
+(role + last-seen fingerprints)
+        ↓
+semantic delta
+        ↓
+role lens
+        ↓
+project briefing
+```
+
+The shared project truth is identical for every role.
+
+Role lenses control:
+- ordering;
+- explanation depth;
+- highlighted implications.
+
+They do not create separate role-specific facts.
+
+The first pull establishes a baseline and gives full project onboarding. Later pulls are delta-oriented.

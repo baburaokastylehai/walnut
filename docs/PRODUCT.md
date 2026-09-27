@@ -14,6 +14,17 @@ The working AI should be allowed to work naturally. Walnut's job is not to make 
 
 Walnut sits above that mess and keeps a durable project record straight.
 
+## Two directions
+
+Walnut has two complementary jobs:
+
+- **push** — contribute confirmed project truth into the shared project brain;
+- **pull** — consume that shared truth as a role-aware project briefing.
+
+Push is conservative about what becomes durable.
+
+Pull is selective about what a person needs to understand, while still preserving project-wide visibility.
+
 ## What Walnut does
 
 Walnut:
@@ -131,3 +142,19 @@ Walnut succeeds when someone or another AI can enter a project cold, read the du
 - where uncertainty still exists.
 
 And when there is nothing new, Walnut should be comfortable doing nothing.
+
+
+## Consumption
+
+The durable project record should be useful without requiring someone to read the original AI chats.
+
+On a person's first pull, Walnut establishes:
+- what problem the project is solving;
+- the current/proposed solution;
+- where the work stands;
+- what matters most to that person's role;
+- what remains unresolved.
+
+On later pulls, Walnut compares the shared project state with what that person last saw and reports semantic changes rather than repeating the whole project.
+
+The role changes emphasis, not truth.

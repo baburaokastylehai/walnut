@@ -1,0 +1,9 @@
+{
+  "mode": "recurring_pull",
+  "updates": [],
+  "response_intent": "Tell the person they are caught up and that nothing meaningful changed since the last pull.",
+  "constraints": [
+    "do not repeat the project overview",
+    "do not treat formatting or rereading as an update"
+  ]
+}
