@@ -1,0 +1,14 @@
+{
+  "mode": "first_pull",
+  "actions": [
+    {
+      "type": "ask_role",
+      "prompt_intent": "Ask once what the person is working on the project as before generating the briefing."
+    }
+  ],
+  "constraints": [
+    "do not generate a role-specific briefing until the role is known",
+    "accept free-text role answers",
+    "persist the role locally"
+  ]
+}
