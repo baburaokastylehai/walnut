@@ -5,7 +5,7 @@
     "input": {
       "request": "I\u2019m testing the booking calendar. Catch me up.",
       "profile": null,
-      "page": "examples/nightjar/shared-brain-initial.md"
+      "page": "evals/regression-data/nightjar/shared-brain-initial.md"
     },
     "expected": [
       "infer tentative QA lens from first-person context",
@@ -22,7 +22,7 @@
         "role": "designer",
         "lastPulledAt": null
       },
-      "page": "examples/nightjar/shared-brain-initial.md"
+      "page": "evals/regression-data/nightjar/shared-brain-initial.md"
     },
     "expected": [
       "first pull despite a saved role",
@@ -35,8 +35,8 @@
     "skill": "pull",
     "input": {
       "request": "Show me the design angle this time.",
-      "profile": "examples/nightjar/reader-after-first-pull.json",
-      "page": "examples/nightjar/shared-brain-current.md"
+      "profile": "evals/regression-data/nightjar/reader-after-first-pull.json",
+      "page": "evals/regression-data/nightjar/shared-brain-current.md"
     },
     "expected": [
       "recurring delta through temporary design lens",
@@ -49,7 +49,7 @@
     "id": "manual-edit-no-event",
     "skill": "pull",
     "input": {
-      "profile": "examples/nightjar/reader-after-first-pull.json",
+      "profile": "evals/regression-data/nightjar/reader-after-first-pull.json",
       "ledgerHead": 3,
       "pageEdit": "D1 now says eight places but ledger still ends at three."
     },
@@ -71,7 +71,7 @@
         }
       },
       "ledger": "noncontiguous events",
-      "page": "examples/nightjar/shared-brain-current.md"
+      "page": "evals/regression-data/nightjar/shared-brain-current.md"
     },
     "expected": [
       "snapshot fallback",
@@ -83,7 +83,7 @@
     "id": "failed-child-read",
     "skill": "pull",
     "input": {
-      "profile": "examples/nightjar/reader-after-first-pull.json",
+      "profile": "evals/regression-data/nightjar/reader-after-first-pull.json",
       "mainRead": "success",
       "requiredChangedChildRead": "permission denied"
     },
@@ -171,8 +171,8 @@
     "id": "unconfirmed-proposal-and-human-reversal",
     "skill": "push",
     "input": {
-      "conversation": "examples/nightjar/conversation.md",
-      "existingPage": "examples/nightjar/shared-brain-initial.md"
+      "conversation": "evals/regression-data/nightjar/conversation.md",
+      "existingPage": "evals/regression-data/nightjar/shared-brain-initial.md"
     },
     "expected": [
       "exclude automatic reminder suggestion",
@@ -188,7 +188,7 @@
     "input": {
       "request": "I\u2019d rather not pick a role. Just explain the project.",
       "profile": null,
-      "page": "examples/nightjar/shared-brain-initial.md"
+      "page": "evals/regression-data/nightjar/shared-brain-initial.md"
     },
     "expected": [
       "use general lens without another role question",
@@ -251,6 +251,57 @@
       "do not report success or advance push checkpoint",
       "refetch and reconcile within retry limit",
       "verify intended batch and resulting revision before accepting any later write"
+    ]
+  },
+  {
+    "id": "product-discovery-tentative-context",
+    "skill": "push",
+    "input": {
+      "conversation": [
+        "examples/product-discovery/sources/session-01.md",
+        "examples/product-discovery/sources/session-02.md"
+      ],
+      "authoritativeSource": "examples/product-discovery/sources/project-brief.md",
+      "existingPage": "empty fictional target"
+    },
+    "expected": [
+      "retain human-owned comparison hypothesis as tentative, not pilot scope or validated finding",
+      "retain limited roleplay observation without inferring actual customer prevalence",
+      "preserve supplied reason for deferring broader workspace",
+      "exclude assistant auto-approval idea that the human did not take ownership of",
+      "publish explicit version-bound approval requirement and leave access question open"
+    ]
+  },
+  {
+    "id": "product-discovery-reasoning-reversal",
+    "skill": "push",
+    "input": {
+      "conversation": "examples/product-discovery/sources/session-03.md",
+      "authoritativeSource": "examples/product-discovery/sources/pilot-scope-update.md",
+      "existingPage": "examples/product-discovery/shared-brain-initial.md"
+    },
+    "expected": [
+      "supersede separate version links with stable deliverable page while preserving old rationale",
+      "refine version-bound explicit approval without inventing old-approval behavior",
+      "resolve access question using email-code decision without inventing code lifetime",
+      "defer tentative comparison proposal without describing it as disproved or promised future work",
+      "keep remaining old-approval behavior open and preserve prior ledger entries"
+    ]
+  },
+  {
+    "id": "product-discovery-returning-designer",
+    "skill": "pull",
+    "input": {
+      "request": "What changed for the design since I last checked?",
+      "profile": "examples/product-discovery/reader-after-first-pull.json",
+      "page": "examples/product-discovery/shared-brain-current.md"
+    },
+    "expected": [
+      "lead with changed direction and supplied reason, not full onboarding",
+      "explain stable-page/version clarity and changed access scope through design lens",
+      "retain hypothesis/evidence limits",
+      "distinguish suggested design implications from assigned tasks and unresolved approval policy",
+      "save complete checkpoint only after successful reads without writing shared state"
     ]
   }
 ]

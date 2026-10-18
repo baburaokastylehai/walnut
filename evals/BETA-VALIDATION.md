@@ -37,3 +37,7 @@ The first access attempt was denied before page creation. After the personal con
 ## Connector retest completed
 
 The user-selected personal connection is now authorized. [Live connector evidence](LIVE-CONNECTOR-VALIDATION.md) records publish/read-back, no-op, first/recurring reader behavior, native JSON code-block preservation, direct edits without events, stale-snapshot rejection and controlled cross-page recovery. The parent page was unchanged. The remaining limitations are explicit in that report.
+
+## PM-driven discovery walkthrough
+
+The public demo now follows a PM exploring a product across AI sessions, returning to saved rationale and bringing teammates into an evolving direction. Confirmation wording explicitly preserves human-owned proposals/hypotheses with their tentative status. [Independent reviewer proposals and response](reviews/2026-10-18/README.md) are separate from illustrative demo outputs and historical live evidence. The prior small dataset remains regression data, not the product story.

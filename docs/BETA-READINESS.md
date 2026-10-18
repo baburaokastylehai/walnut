@@ -6,7 +6,7 @@ This is the current release map, not a claim that every gate has passed. Review 
 |---|---|---|
 | Portable push/pull, character and project language | Implemented | Direct checkout execution or self-contained exports; canonical source in `plugins/walnut/` |
 | Shared ledger and reader checkpoint contracts | Implemented as instructions; structural helper tested | `references/change-ledger.md`, `scripts/ledger.mjs` inside the plugin |
-| Fictional demo, README, exact architecture image and repo hygiene | Implemented | README, `examples/nightjar/`, LICENSE, setup/security/contributing docs |
+| Fictional demo, README, exact architecture image and repo hygiene | Implemented; PM-driven discovery demo | README, `examples/product-discovery/`, LICENSE, setup/security/contributing docs |
 | Repository checks and Node helper tests | Passing locally and in initial PR CI | Rerun after changes |
 | Independent behavioral review | Completed for selected fictional cases | Five further failure exercises/68 assertions and six UX samples in [acceptance evidence](../evals/acceptance/2026-10-17/README.md); earlier five first-pass simulations, eight helper edge cases and four recovery simulations; see [evidence](../evals/reviews/2026-10-17/README.md) |
 | Optional Claude loading and local marketplace install | Passed | Official CLI 2.1.302, both skills discovered, strict validation clean; [acceptance evidence](../evals/acceptance/2026-10-17/README.md) |

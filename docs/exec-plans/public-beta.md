@@ -8,7 +8,7 @@ The product remains one portable skill set with push and pull; native host integ
 
 ## Current decision
 
-The repository migration is complete. No GitHub approval or Support action is required from the user. The beta PR is draft, CI passes, and it is mergeable. Outstanding acceptance work is recorded below. Merge, tagging and external announcements remain separate actions; this plan does not silently authorize them.
+The repository migration is complete. No GitHub approval or Support action is required from the user. The original beta PR was merged. A fresh public-main clone, export and all 11 tests passed after merge. A PM-driven demo replacement is being developed on a new branch. Merge, tagging and external announcements remain separate actions; this plan does not silently authorize them.
 
 | ID / job to be done | Owner | Status | Completion evidence |
 |---|---|---|---|
@@ -64,4 +64,8 @@ A compact private run receipt and a narrow executable revision/idempotency/check
 
 ## Portable acceptance outcome
 
-[Recorded evidence](../../evals/HOST-PORTABILITY.md) covers independent exports, resolved packaging review and live exported pull execution in Codex. Claude login is not a core beta requirement. Optional adapter tests and untested host discovery remain explicitly scoped. Latest CI and integration status are visible in the draft PR.
+[Recorded evidence](../../evals/HOST-PORTABILITY.md) covers independent exports, resolved packaging review and live exported pull execution in Codex. Claude login is not a core beta requirement. Optional adapter tests and untested host discovery remain explicitly scoped. Latest CI and integration status are visible in the relevant PR.
+
+## Product-discovery demonstration
+
+Replace the public toy example with a fictional PM working across AI exploration sessions, preserving adopted rationale, human-owned hypotheses and evolving decisions, then onboarding a designer/engineer and catching up a returning reader. Current example work is source-grounded expected output, not new live-connector evidence. Old datasets remain regression inputs under `evals/regression-data/` so historical evidence stays tied to its tested material.

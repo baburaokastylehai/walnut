@@ -10,4 +10,4 @@ Recurring pulls consume contiguous shared-ledger events and compare current reco
 
 Important project-wide movement stays visible. Implications are labeled as implications; owners and required actions are stated only when sourced. No change gets one sentence.
 
-Pull never writes to the shared project record. A failed or incomplete read does not advance the local checkpoint. See the [ledger](../plugins/walnut/references/change-ledger.md), [local state](../plugins/walnut/references/local-state.md), and [fictional walkthrough](../examples/nightjar/README.md).
+Pull never writes to the shared project record. A failed or incomplete read does not advance the local checkpoint. See the [ledger](../plugins/walnut/references/change-ledger.md), [local state](../plugins/walnut/references/local-state.md), and [fictional walkthrough](../examples/product-discovery/README.md).

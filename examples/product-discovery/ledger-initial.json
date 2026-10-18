@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "epoch": "fold-fictional-discovery-v1",
+  "baseSequence": 0,
+  "headSequence": 5,
+  "entries": [
+    {
+      "sequence": 1,
+      "eventId": "fold-demo-push-1:1",
+      "batchId": "fold-demo-push-1",
+      "recordId": "D1",
+      "action": "add",
+      "summary": "Choose version-specific review links; defer a broader client workspace.",
+      "before": null,
+      "after": "Separate review link for each uploaded version; defer the broader workspace to limit pilot scope.",
+      "source": "sources/session-01.md and sources/project-brief.md \u2014 PM decision, approved in session 02",
+      "publishedAt": "2026-10-18T10:05:00Z"
+    },
+    {
+      "sequence": 2,
+      "eventId": "fold-demo-push-1:2",
+      "batchId": "fold-demo-push-1",
+      "recordId": "R1",
+      "action": "add",
+      "summary": "Require explicit approval of the reviewed version.",
+      "before": null,
+      "after": "Client explicitly approves the reviewed version; opening it is not approval.",
+      "source": "sources/session-02.md and sources/project-brief.md \u2014 PM-confirmed requirement",
+      "publishedAt": "2026-10-18T10:05:00Z"
+    },
+    {
+      "sequence": 3,
+      "eventId": "fold-demo-push-1:3",
+      "batchId": "fold-demo-push-1",
+      "recordId": "Q1",
+      "action": "add",
+      "summary": "Keep the client access method open for PM resolution.",
+      "before": null,
+      "after": "PM to resolve client accounts versus another access method before pilot scope is ready.",
+      "source": "sources/session-01.md and sources/project-brief.md \u2014 PM-owned open question",
+      "publishedAt": "2026-10-18T10:05:00Z"
+    },
+    {
+      "sequence": 4,
+      "eventId": "fold-demo-push-1:4",
+      "batchId": "fold-demo-push-1",
+      "recordId": "P1",
+      "action": "add",
+      "summary": "Retain the PM-owned comparison proposal as an untested hypothesis.",
+      "before": null,
+      "after": "Tentative PM proposal: side-by-side versions might make revisions easier to review; not committed pilot scope.",
+      "source": "sources/session-01.md and sources/project-brief.md \u2014 PM ownership and explicit retention approval",
+      "publishedAt": "2026-10-18T10:05:00Z"
+    },
+    {
+      "sequence": 5,
+      "eventId": "fold-demo-push-1:5",
+      "batchId": "fold-demo-push-1",
+      "recordId": "F1",
+      "action": "add",
+      "summary": "Scope the observation to a fictional scripted walkthrough.",
+      "before": null,
+      "after": "PM roleplay used approved when a design was only opened; scripted exercise, not customer evidence.",
+      "source": "sources/session-02.md and sources/project-brief.md \u2014 PM-confirmed observation and evidence boundary",
+      "publishedAt": "2026-10-18T10:05:00Z"
+    }
+  ]
+}

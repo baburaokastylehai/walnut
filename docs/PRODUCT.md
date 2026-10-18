@@ -69,6 +69,12 @@ Old does not mean irrelevant.
 
 A six-month-old decision can remain authoritative until it is explicitly refined, superseded, withdrawn, or contradicted by stronger current evidence.
 
+### keep the reasoning, with its status intact.
+
+A product manager may explore several directions across AI work sessions before settling one. Walnut can retain meaningful human-owned hypotheses, proposals, research, open questions and reasons for deferring an alternative. Confirming that a person is considering an idea does not validate the idea or adopt it as a decision.
+
+A later push can refine that direction while preserving the earlier reasoning and source trail. Pull explains the current direction, what is still tentative, and what changed for the reader. This is selected project memory from accessible sources, not an automatic archive of every conversation.
+
 ### uncertainty is a result.
 
 When trustworthy sources genuinely disagree and Walnut cannot resolve the conflict, it should surface that conflict rather than choose one.

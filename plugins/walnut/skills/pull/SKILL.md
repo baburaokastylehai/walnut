@@ -125,6 +125,8 @@ Do not start with a list of D/R/Q IDs.
 
 Use those records to build a coherent explanation.
 
+Keep proposals and hypotheses tentative, evidence qualified, and decisions distinct. Explain supplied reasoning and meaningful rejected or deferred alternatives when they help the person understand the current direction. A deferral is not a promised future task.
+
 Project terminology should be preserved where it makes the explanation more useful to the team. Explain unfamiliar or changed terms naturally in context.
 
 ## Step 5 — recurring pull: detect what changed
@@ -136,6 +138,7 @@ A meaningful update includes:
 - a refinement to an existing record;
 - a superseded/reversed decision;
 - a resolved or newly opened question;
+- a material change in a proposal, hypothesis, supporting evidence or supplied reasoning;
 - a changed project overview/status;
 - a new or materially changed mirrored context document;
 - a project change that alters the role-specific understanding of the work.

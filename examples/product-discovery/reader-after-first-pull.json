@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "target": {
+    "provider": "confluence",
+    "cloudId": "fictional",
+    "pageId": "fold-demo"
+  },
+  "role": "designer",
+  "roleSource": "explicit",
+  "lastPulledAt": "2026-10-18T10:15:00Z",
+  "ledger": {
+    "epoch": "fold-fictional-discovery-v1",
+    "sequence": 5
+  },
+  "seen": {
+    "D1": "Separate version-specific review links; broader workspace deferred to limit pilot scope.",
+    "R1": "Explicit client approval tied to reviewed version; opening is not approval.",
+    "Q1": "Client access method unresolved; PM to decide.",
+    "P1": "PM-owned side-by-side comparison hypothesis; tentative, not committed pilot scope.",
+    "F1": "Scripted PM roleplay observation only; not customer research."
+  },
+  "children": {}
+}

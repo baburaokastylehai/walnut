@@ -16,4 +16,4 @@ This is an early beta. Important updates need review. The host still interprets 
 
 If you try it, start with a disposable page. I'd like to know where it missed a decision, repeated something you already knew, or gave you the wrong level of detail.
 
-[Repository](https://github.com/baburaokastylehai/walnut) · [Tester guide](BETA-TESTER-GUIDE.md) · [Fictional walkthrough](../examples/nightjar/README.md)
+[Repository](https://github.com/baburaokastylehai/walnut) · [Tester guide](BETA-TESTER-GUIDE.md) · [Fictional walkthrough](../examples/product-discovery/README.md)

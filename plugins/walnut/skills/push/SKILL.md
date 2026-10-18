@@ -114,9 +114,11 @@ Read `references/confirmation.md`, `references/knowledge-model.md`, and `referen
 
 Apply the confirmation policy to every candidate individually.
 
+Confirm the supported status as well as the substance. Meaningful human-owned proposals, untested hypotheses and introduced evidence can be retained with those labels; they need not be settled decisions. An explicit request to explore or compare an assistant idea establishes consideration, not adoption. Merely acknowledging it or continuing the conversation establishes neither.
+
 Assistant-originated ideas do not become durable project truth unless a human adopts them.
 
-Human rejections count.
+Human rejections count. Preserve deferrals separately from permanent rejections, with reasons and revisit conditions only when supplied; neither implies an invented future task.
 
 Partial acceptance only confirms the accepted portion.
 
@@ -130,7 +132,7 @@ Walnut may synthesize a Project Overview from multiple confirmed facts only when
 
 Read `references/reconciliation.md`.
 
-Compare confirmed candidates against the whole durable record by substance.
+Compare candidates with confirmed source/status against the whole durable record by substance, preserving tentative versus settled distinctions.
 
 For each candidate choose one semantic outcome:
 
