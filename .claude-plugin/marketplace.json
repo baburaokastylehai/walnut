@@ -9,5 +9,6 @@
       "source": "./plugins/walnut",
       "description": "One shared project brain. Push what stuck; pull what matters."
     }
-  ]
+  ],
+  "description": "Keep what matters from AI work. Share project context with push and pull."
 }

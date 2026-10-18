@@ -15,7 +15,7 @@ The beta branch starts from the new root commit on `main`. A private local backu
 - Run repository validation and Node tests.
 - Review semantic fixtures and response shapes.
 - Check installation from the actual plugin directory; no reference may depend on files outside that directory.
-- On a disposable Confluence page, check first push, no-op push, first pull, recurring pull, direct page edits, a failed read and a connector round trip of the ledger.
+- Execute the installed skills through authenticated Claude Code on a disposable Confluence page: first push, no-op push, first pull, recurring pull, direct page edits, a required-read failure with checkpoint comparison, and ledger round trip. Separate host loading, policy simulation and Codex connector trials do not establish this integrated path.
 - Confirm no private state, real project examples or audit evidence are tracked.
 - Confirm the README and version describe the package being shipped.
 

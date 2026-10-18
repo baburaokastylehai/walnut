@@ -145,7 +145,7 @@ Do not report:
 - unchanged records;
 - internal Walnut bookkeeping.
 
-If nothing meaningful changed, give the one-sentence result and complete Step 8 before stopping. A successful comparison may advance a covered ledger cursor even when several events cancel out semantically.
+If nothing meaningful changed, give the short no-change result and complete Step 8 before stopping. A successful comparison may advance a covered ledger cursor even when several events cancel out semantically.
 
 ## Step 6 — translate changes through the role lens
 

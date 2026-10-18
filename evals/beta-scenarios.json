@@ -152,7 +152,7 @@
       "no shared write",
       "no mass baseline events",
       "preserve historical IDs and children",
-      "one-sentence no-change result"
+      "short no-change result"
     ]
   },
   {
@@ -203,7 +203,7 @@
       "currentState": "identical in meaning to the reader\u2019s checkpoint"
     },
     "expected": [
-      "one sentence indicating no meaningful change",
+      "one short response indicating no meaningful change",
       "no full overview or empty headings",
       "checkpoint may update only after complete successful read"
     ]

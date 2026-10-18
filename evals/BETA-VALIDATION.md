@@ -12,14 +12,17 @@ The expected behaviors remain encoded in `beta-scenarios.json`. A separate revie
 
 That review found and corrected a missing recovery step: pending mirror events must be examined before the next push’s no-op exit. The unchanged-next-run case now preserves stable event identity, allocates from the current head, reads back and clears pending state only after verification. Already-published and stale-child cases are covered separately. The demo was also corrected so an intended unadopted assistant suggestion is not confused with a confirmed human scope deferral.
 
+## Acceptance update
+
+[Candidate acceptance evidence](acceptance/2026-10-17/README.md) now records actual Claude Code package loading, isolated local marketplace installation and both discovered skills, five additional reviewer-driven failure exercises with 68 invariant checks, and six UX samples. Both strict host validators pass without warnings.
+
 ## Still required before merge/release
 
-- Load the actual package in Claude Code and verify both namespaced skills appear.
-- Complete any remaining live failure-injection cases; normal publish/read/no-op/manual-edit cases have now run through the real connector.
-- Complete controlled live failed-required-read and repeated-concurrent-writer fault cases if required for release; current evidence distinguishes these simulations from actual stale-write rejection and mirror recovery.
-- Keep the verified independent/public versus legacy/private separation intact. No claim is made about deletion of retained backups or external copies.
+- Run the authenticated Claude Code → Confluence end-to-end trial in the [tester guide](../docs/BETA-TESTER-GUIDE.md), including controlled required-read failure and checkpoint preservation. Host discovery and Codex live connector tests passed separately; this integrated path is not yet established.
+- Complete independent review of the final candidate and confirm its CI. Keep the verified independent/public versus legacy/private separation intact.
+- After merge, verify fresh installation from public main. Local marketplace installation did not exercise GitHub fetching.
 
-The PR stays draft while the remaining merge gates are open. The only live test pages contain fictional content.
+The PR stays draft while these premerge gates remain open. Repeated live-concurrency and transport stress are follow-ups unless an observed defect makes them blocking. No claim is made about deletion of retained backups or external copies. The only live test pages contain fictional content.
 
 ## Initial live test preflight
 

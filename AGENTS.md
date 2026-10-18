@@ -6,4 +6,6 @@ Use only fictional examples. Keep private local state, backups, audit evidence a
 
 Run `node scripts/validate-repo.mjs` and `node --test` with Node.js 22+. These check structure and executable helpers, not live host/connector behavior. For behavioral work, use isolated fake destinations and capture the actual proposed actions/state changes. Keep independent review distinct from a live integration test.
 
+The active job assignments and supervision contract live in `docs/exec-plans/public-beta.md`.
+
 Current merge gates and evidence live in `docs/BETA-READINESS.md` and `evals/BETA-VALIDATION.md`. Keep the PR draft until its required checks are complete. Do not turn a research suggestion into a new product commitment without assessing scope and evidence.

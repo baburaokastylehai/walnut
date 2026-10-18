@@ -1,0 +1,47 @@
+{
+  "method": "Independent reviewer model generated these responses from packaged pull character/onboarding/brief-format instructions and fictional Nightjar inputs. No Claude Code invocation, Confluence calls or production writes. These are actual model responses in a policy exercise; scoring is the same reviewer's assessment, not an independent judge.",
+  "cases": [
+    {
+      "id": "first-inferred-qa",
+      "input": "No profile. Request: I'm testing the booking flow. Catch me up. Complete initial Nightjar record read successfully.",
+      "response": "I'm reading this through QA for now. Nightjar is a telescope-booking prototype for volunteers, preparing for a small pilot. The calendar will show observing slots and the places left before someone books.\n\nEach slot is planned to have six places. That is a decision, not a claim that it is already built. Whether full slots should offer a waiting list is still open.\n\nFor testing, useful boundaries are the last available place and a booking beyond the limit. Those are implications of the six-place rule, not assigned tasks. The waiting-list decision will affect what someone sees when a slot is full.",
+      "review": "Pass: tentative lens, project context, build status preserved, implications labeled, unresolved edge visible. A small project merits less than 150 words; no mechanical headings required.",
+      "expectedStateAction": "Save tentative QA role/evidence and successful baseline locally only after complete reading; no shared writes. Not executed in this policy exercise."
+    },
+    {
+      "id": "role-only-profile-first",
+      "input": "Saved role designer, no successful checkpoint. Complete initial Nightjar record read successfully.",
+      "response": "Nightjar is a telescope-booking prototype for volunteers. The team is preparing a small pilot: people choose an observing slot and see how many places remain before booking.\n\nThe current plan is six places per slot; it is decided, not confirmed built. The waiting-list policy is still open.\n\nFor design, that leaves one important edge to work through: what the calendar shows when a slot is full. A waiting-list option has not been approved. The remaining-places display is already a confirmed requirement.",
+      "review": "Pass: onboarding despite saved role, no repeated role question, no claim all ledger events are new; design implications grounded.",
+      "expectedStateAction": "Retain saved designer role and create first successful local baseline; no shared writes. Not executed."
+    },
+    {
+      "id": "missing-role",
+      "input": "No profile or first-person work context. Request: Catch me up.",
+      "response": "What's your part in the project?",
+      "review": "Pass: one concrete question without role form or preamble. No inference from project owner.",
+      "expectedStateAction": "No completed briefing checkpoint yet. Not executed."
+    },
+    {
+      "id": "role-declined",
+      "input": "No profile. Request: I'd rather not pick a role. Just explain the project. Complete initial Nightjar record read successfully.",
+      "response": "Nightjar is a telescope-booking prototype for volunteers. The team is preparing a small pilot where people choose an observing slot and see the places left before booking.\n\nThe plan is six places per slot. That decision is recorded, but the shared record does not say it has been built. Showing remaining places is a confirmed requirement.\n\nThe open question is what happens when a slot is full: should there be a waiting list? There is no settled policy yet.",
+      "review": "Pass: general briefing, no repeated role question, confirmed versus open remains clear.",
+      "expectedStateAction": "Save general lens and successful baseline locally after complete read. Not executed."
+    },
+    {
+      "id": "recurring-qa",
+      "input": "Successful QA baseline at initial sequence 3, complete current Nightjar record at sequence 6.",
+      "response": "The pilot slot limit changed from six to eight places, and the pilot will have no waiting list. That closes the earlier waiting-list question.\n\nFor QA, the capacity boundary is now the eighth place and the first booking beyond it. Those are testing implications of the new decision; the record does not assign them to you. Showing remaining places before booking is unchanged.",
+      "review": "Pass: delta first, no re-onboarding, reversal and resolved question visible; concise grounded implications, no invented assignment.",
+      "expectedStateAction": "Save complete verified baseline through sequence 6 after briefing; no shared writes. Not executed."
+    },
+    {
+      "id": "recurring-no-change",
+      "input": "Complete successful read; current meaning identical to successful reader baseline.",
+      "response": "You're caught up. Nothing meaningful changed since your last pull.",
+      "review": "Pass on concise shape, but the shipped example uses two grammatical sentences despite the character contract saying one sentence. This follows the example and meaning but exposes a small contract wording inconsistency.",
+      "expectedStateAction": "Complete successful checkpoint handling; no shared writes. Not executed."
+    }
+  ]
+}
