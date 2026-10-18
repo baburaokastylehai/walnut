@@ -10,8 +10,8 @@ body:
     id: version
     attributes:
       label: Walnut version or commit
-      description: Include the install method (marketplace or local plugin directory).
-      placeholder: "v0.3.0, marketplace"
+      description: Include the install method (checkout, exported skills or optional marketplace).
+      placeholder: "v0.3.0, exported skills"
     validations:
       required: true
   - type: input
@@ -19,7 +19,7 @@ body:
     attributes:
       label: Host and version
       description: Include operating system and Confluence connector type if known. Do not include account or site identifiers.
-      placeholder: "Claude Code <version>, macOS, connector <type>"
+      placeholder: "Host <name/version>, OS <name>, connector <type>"
     validations:
       required: true
   - type: dropdown
@@ -39,7 +39,7 @@ body:
     id: reproduction
     attributes:
       label: Fictional reproduction
-      description: Give the starting state, fictional source facts, action and steps needed to reproduce. Say whether this used the actual plugin or a simulation.
+      description: Give the starting state, fictional source facts, action and steps needed to reproduce. Say whether this used the actual skill execution or a simulation.
     validations:
       required: true
   - type: textarea

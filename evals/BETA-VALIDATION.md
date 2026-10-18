@@ -16,13 +16,19 @@ That review found and corrected a missing recovery step: pending mirror events m
 
 [Candidate acceptance evidence](acceptance/2026-10-17/README.md) now records actual Claude Code package loading, isolated local marketplace installation and both discovered skills, five additional reviewer-driven failure exercises with 68 invariant checks, and six UX samples. Both strict host validators pass without warnings.
 
+## Host-neutral acceptance update
+
+Walnut's core target is any capable host that can read the complete skills, access sources and authenticated destination tools, and persist private state. The earlier Claude-only authenticated gate is superseded by this product decision. Claude remains an optional adapter; its untested authenticated invocation must not be reported as passed.
+
+Independent exported-skill containment, helper execution, determinism and no-overwrite tests pass. [Portable host evidence](HOST-PORTABILITY.md) records a live exported pull trial in Codex, first/no-change responses and actual private checkpoint persistence. Earlier live Codex push/pull checks remain evidence for their actual scope. Neither proves every host's native discovery or universal compatibility.
+
 ## Still required before merge/release
 
-- Run the authenticated Claude Code → Confluence end-to-end trial in the [tester guide](../docs/BETA-TESTER-GUIDE.md), including controlled required-read failure and checkpoint preservation. Host discovery and Codex live connector tests passed separately; this integrated path is not yet established.
-- Complete independent review of the final candidate and confirm its CI. Keep the verified independent/public versus legacy/private separation intact.
-- After merge, verify fresh installation from public main. Local marketplace installation did not exercise GitHub fetching.
+- Keep the [portable acceptance evidence](HOST-PORTABILITY.md) attached to the candidate; it separates live behavior, simulated faults and native loading.
+- Confirm final CI and independent review. Keep the independent/public versus legacy/private separation intact.
+- After merge, verify fetching the public candidate from main; optional marketplace fetching is a separate adapter check.
 
-The PR stays draft while these premerge gates remain open. Repeated live-concurrency and transport stress are follow-ups unless an observed defect makes them blocking. No claim is made about deletion of retained backups or external copies. The only live test pages contain fictional content.
+Keep draft during final integration. Repeated live concurrency/transport stress and optional Claude authenticated execution remain follow-ups with their coverage limits explicit. No user Claude login is required for core beta validation. No claim is made about deletion of retained backups or external copies.
 
 ## Initial live test preflight
 

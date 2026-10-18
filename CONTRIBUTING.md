@@ -11,7 +11,7 @@ node --test
 
 For skill changes, add a semantic fixture that would expose the failure. Preserve confirmation boundaries, stable IDs, shared history, read-only pull and failed-read checkpoint behavior. A wording test is not a substitute for checking the decision the skill makes.
 
-The shipped plugin is `plugins/walnut/`. Shared references must stay inside that directory because hosts cache it independently of this repository. Keep voice guidance shared between both skills.
+Canonical skill source is `plugins/walnut/`; its Claude manifest is an optional host adapter. Author shared guidance once in its `references/`. The exporter generates independent skill folders with local copies and rewritten links. Do not hand-edit exported copies. Keep references inside the canonical bundle and each generated skill boundary. Run the export tests when changing references, resources or packaging.
 
 A PR should explain the problem, resulting behavior and validation limits. Do not claim a live connector test unless you ran it. Before publishing, inspect the diff for private data and use only fictional examples. Report security concerns through [SECURITY.md](SECURITY.md).
 

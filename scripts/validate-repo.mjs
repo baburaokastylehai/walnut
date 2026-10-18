@@ -18,7 +18,7 @@ function walk(rel = '') {
 }
 const required = ['README.md', 'LICENSE', 'CONTRIBUTING.md', 'SECURITY.md', '.claude-plugin/marketplace.json', `${pluginRoot}/.claude-plugin/plugin.json`,
   'docs/SETUP.md', 'docs/LIMITATIONS.md', 'docs/VERSIONING.md', 'docs/ARCHITECTURE.md', 'assets/walnut-architecture.png',
-  ...['character', 'project-language', 'change-ledger', 'local-state'].map(x => `${pluginRoot}/references/${x}.md`),
+  ...['character', 'project-language', 'change-ledger', 'local-state', 'host-capabilities'].map(x => `${pluginRoot}/references/${x}.md`),
   ...['push', 'pull'].map(x => `${pluginRoot}/skills/${x}/SKILL.md`)];
 for (const name of required) if (!exists(name)) fail(`missing ${name}`);
 if (failures) process.exit(1);

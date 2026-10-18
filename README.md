@@ -16,13 +16,31 @@ Walnut keeps that story straight. `/push` carries confirmed project context into
 
 Nothing changed? Walnut says so and stops.
 
-> **Public beta · v0.3** — a skills plugin for Claude Code. Confluence is the supported shared destination. Walnut uses the host AI and its existing connection; there is no separate Walnut service.
+> **Public beta · v0.3** — two skills for an AI host with project access, private local state and connected tools. Confluence is the supported shared destination. Walnut uses the host AI and its existing connection; there is no separate Walnut service.
 
 ## Try it
 
-You need Claude Code with plugin support, a working Confluence connection with page read/update capabilities, and a project page you are allowed to maintain. Pull-only readers need read access. Installing Walnut does not connect Confluence for you.
+You need a host that can read the skill and its references, access your conversation and selected project files, save private local state, and use an authenticated Confluence connection. Push needs version-aware updates and read-back; pull-only readers need read access. Installing Walnut does not connect Confluence for you.
 
-In Claude Code:
+Clone this repository and keep its structure intact:
+
+```sh
+git clone https://github.com/baburaokastylehai/walnut.git
+```
+
+Ask your host to use `plugins/walnut/skills/push/SKILL.md` or `plugins/walnut/skills/pull/SKILL.md` from that checkout and follow the referenced files. The files are instructions for the host, not standalone programs. Give it the local checkout path so it can read the actual files.
+
+If your host has a native skill installer, export two self-contained skill folders with Node.js 22+:
+
+```sh
+node scripts/export-skills.mjs ./walnut-export
+```
+
+Run that command from the cloned repository. Install the exported `push` and `pull` folders using your host's own instructions. Skill invocation and installation locations depend on the host; the `/push` and `/pull` names here describe Walnut's two actions. See [setup](docs/SETUP.md) for capability checks and the first trial. Host compatibility must be verified in that environment.
+
+**Optional: Claude Code plugin installation**
+
+Claude Code users can use its marketplace instead:
 
 ```text
 /plugin marketplace add baburaokastylehai/walnut
@@ -36,11 +54,11 @@ Claude Code namespaces plugin commands, so the two actions appear as:
 /walnut:pull
 ```
 
-The shorter `/push` and `/pull` names in the diagram describe those same actions. See the [Claude Code plugin documentation](https://code.claude.com/docs/en/plugins) for the host’s command and installation behavior.
+See the [Claude Code plugin documentation](https://code.claude.com/docs/en/plugins) for that host's installation behavior. The diagram uses Claude as an example environment; Walnut's skill contracts do not require it.
 
 On your first push, give Walnut the exact Confluence page URL. It verifies and remembers the target locally. On pull, describe your part in the project if it is not already clear. Useful existing context is enough; no role form or fixed document template is required.
 
-To test a branch before it merges, run `claude --plugin-dir ./plugins/walnut` from its checkout. Marketplace installation follows `main`.
+To test a branch, check out that branch before loading or exporting the skills. Claude Code can also use `claude --plugin-dir ./plugins/walnut`. Marketplace installation follows `main`.
 
 [Setup and migration](docs/SETUP.md) · [Fictional walkthrough](examples/nightjar/README.md)
 
@@ -74,7 +92,7 @@ That QA boundary is an implication of the confirmed limit, not a newly assigned 
 
 ## Know the limits
 
-Walnut is an instruction-driven plugin, not a background sync engine. It only sees sources the host can access. It does not monitor all your chats, authenticate services, enforce access permissions, or guarantee that a model will interpret every change correctly. Review important updates.
+Walnut is a set of host-executed skills, not a background sync engine. It only sees sources the host can access. It does not monitor all your chats, authenticate services, enforce access permissions, or guarantee that a model will interpret every change correctly. Review important updates.
 
 Confluence is the only live adapter today. The Markdown walkthrough is a reproducible example, not another supported destination. Long ledgers, connector formatting differences, incomplete reads, and concurrent edits need care; [limitations and recovery](docs/LIMITATIONS.md) explain the boundaries.
 

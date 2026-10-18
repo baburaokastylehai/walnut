@@ -10,7 +10,7 @@ I've been building Walnut to keep the useful part of AI work from getting lost b
 
 The idea is simple: work naturally with your AI, keep what actually stuck, and give the next person enough context to understand it. An assistant suggestion should not quietly become a team decision.
 
-Walnut is a small Claude Code plugin with two actions, `/walnut:push` and `/walnut:pull`. It uses the host's existing Confluence connection. There is no separate Walnut service.
+Walnut is two skills for your AI host: push and pull. You can load them from the repository or export them for a native skill installer. A Claude Code plugin is also available. The host needs project access, private local state and a working Confluence connection. There is no separate Walnut service.
 
 This is an early beta. Important updates need review. The host still interprets the sources and carries out the writes; interrupted updates and conflicting edits need care. The repository includes a fictional walkthrough, setup instructions and the validation evidence so you can see what has been checked.
 

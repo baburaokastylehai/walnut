@@ -2,7 +2,7 @@
 
 Walnut uses one package version for both skills. v0.3.0 is the public-beta candidate. Minor versions may change behavior during the pre-1.0 phase; patch versions fix compatible behavior or documentation.
 
-Develop on a branch and open a PR. Validate the final commit before merging. Publish a tag/release only after review and a live disposable-page smoke test. Never use a plugin upgrade to reset a shared project record.
+Develop on a branch and open a PR. Validate the final commit before merging. Publish a tag/release only after review and a live disposable-page smoke test. Never use a skill upgrade to reset a shared project record.
 
 ## Baselines
 
@@ -14,8 +14,9 @@ The beta branch starts from the new root commit on `main`. A private local backu
 
 - Run repository validation and Node tests.
 - Review semantic fixtures and response shapes.
-- Check installation from the actual plugin directory; no reference may depend on files outside that directory.
-- Execute the installed skills through authenticated Claude Code on a disposable Confluence page: first push, no-op push, first pull, recurring pull, direct page edits, a required-read failure with checkpoint comparison, and ledger round trip. Separate host loading, policy simulation and Codex connector trials do not establish this integrated path.
+- Export both skills into an isolated directory. Each skill must work without the checkout or its sibling skill; verify links and the helper. Keep optional host adapters separately validated.
+- Execute skill instructions in at least one capable host on a disposable Confluence page: first push, no-op push, first pull, recurring pull, direct page edits and ledger round trip. Record host, loading method, tool actions and state. Verify required-read failure/checkpoint preservation with a controlled adapter, clearly labeling simulated faults. A clone or host manifest alone is not functional validation.
+- Report optional native loaders separately. Claude authentication is not a core release requirement, and one verified host does not establish support for every host.
 - Confirm no private state, real project examples or audit evidence are tracked.
 - Confirm the README and version describe the package being shipped.
 

@@ -45,7 +45,7 @@ Missing ledger, changed epoch, expired/ahead cursor, gaps, malformed entries or 
 
 ## Optional structural helper
 
-With Node.js available, validate a local JSON ledger before publication using [scripts/ledger.mjs](../scripts/ledger.mjs): `node <plugin-root>/scripts/ledger.mjs <ledger.json>`. Pull can use its exported `ledgerCoverage` helper to check sequence coverage. With no Node runtime, apply the same rules directly. It validates structure, not source confirmation, permission or semantic equivalence. It never writes the shared page.
+With Node.js available, validate a local JSON ledger before publication using [scripts/ledger.mjs](../scripts/ledger.mjs): run the linked script with `node` and the ledger JSON file path. Pull can use its exported `ledgerCoverage` helper to check sequence coverage. With no Node runtime, apply the same rules directly. It validates structure, not source confirmation, permission or semantic equivalence. It never writes the shared page.
 
 ## Recover pending mirror events before no-op
 

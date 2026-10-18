@@ -1,5 +1,7 @@
 # Candidate acceptance review
 
+Historical review before the host-neutral packaging decision. The Claude-only gate below is superseded by [current portability acceptance](../../HOST-PORTABILITY.md); the captured results and their limits remain unchanged.
+
 Reviewed the package based on `087b312` plus the manifest description and short no-change wording corrections included in the commit adding this report. Only fictional Nightjar material was used. Agent work was isolated; the primary integrated the results.
 
 ## Actual host acceptance

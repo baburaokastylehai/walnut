@@ -4,7 +4,7 @@
 
 A new contributor can install Walnut, push confirmed fictional context, and pull a useful first or recurring briefing. Incomplete reads and writes remain visible and recoverable. A reviewer can inspect the evidence behind release decisions.
 
-The product remains one package with push and pull. Development agents are a way to build and verify it; they do not add an autonomous agent service to Walnut.
+The product remains one portable skill set with push and pull; native host integrations are optional. Development agents are a way to build and verify it; they do not add an autonomous agent service to Walnut.
 
 ## Current decision
 
@@ -12,14 +12,14 @@ The repository migration is complete. No GitHub approval or Support action is re
 
 | ID / job to be done | Owner | Status | Completion evidence |
 |---|---|---|---|
-| HOST-01: install and discover the actual skills | Host-validation agent | Complete | Actual host/version, plugin validator output, both discovered skills; separate discovery from authenticated invocation |
+| HOST-01: validate optional Claude installation/discovery | Host-validation agent | Complete | Actual host/version, plugin validator output, both discovered skills; separate discovery from authenticated invocation |
 | BEHAVIOR-02: preserve truth and state when operations fail | Behavioral evaluator | Complete | Fresh agent choices, fake connector actions, before/after state and independent invariant checks |
 | UX-03: make first use and updates understandable | Product/docs agent | Complete | First-use, inferred/missing/declined role and no-change responses; concrete defects rather than exact prose matching |
 | BETA-04: let a tester reproduce and report the experience | Product/docs agent | Complete | Short tester guide, feedback form and unpublished announcement draft consistent with evidence |
 | AUDIT-05: review the final candidate independently | Independent reviewer | Complete | Final diff, privacy/package audit, meaningful checks and evidence tied to candidate revision |
-| RELEASE-06: integrate a reviewable candidate | Primary integrator | Integrating; CI pending | Final CI, resolved or explicit blocked gates, accurate readiness and rollback references |
-| E2E-08: execute authenticated skills against disposable Confluence | Host tester | Blocked on host authentication; premerge gate | Tester guide cases, real tool actions/revisions and checkpoint comparison; requires Claude Code authentication and its own connector |
-| MARKETPLACE-07: verify installation from public main | Host-validation agent | After merge | Fresh consumer install resolves one plugin and both skills; no stale cache assumed |
+| RELEASE-06: integrate a reviewable candidate | Primary integrator | Candidate integrated; latest CI in PR | Final CI, resolved or explicit blocked gates, accurate readiness and rollback references |
+| PORTABLE-08: export and execute complete skills independently | Packaging reviewer + host agent | Complete | Isolated self-contained exports, working helper, actual Codex instruction execution; separate native loader claims |
+| FETCH-07: verify installation from public main | Host-validation agent | After merge | Fresh checkout/export; optional marketplace fetching separately checked |
 
 ## Harness contract for every job
 
@@ -47,7 +47,7 @@ Done: first pull explains the project; recurring pull gives changes; no-change s
 
 Inputs: final candidate diff, accepted job evidence, automated results and readiness map. Reviewer is read-only. The integrator alone resolves changes and publishes branch updates. Done: no private data, broken package references or unsupported claims; release gates have explicit pass/block/follow-up decisions.
 
-Required: actual host package discovery and failed-read checkpoint safety. Authenticated end-to-end execution remains a premerge gate under E2E-08. Package loading and separate Codex connector tests do not substitute for it. Repeated live-concurrency and transport stress are documented follow-up checks unless an observed defect makes them blocking. Do not add new gates indefinitely without explaining the failure they protect.
+Required: portable skill containment and actual execution in at least one capable host, plus failed-read checkpoint safety with clearly labeled fault evidence. PORTABLE-08 replaces the earlier Claude-only E2E gate following the host-neutral product decision. Optional Claude authentication is not required for core acceptance. Repeated live-concurrency and transport stress are documented follow-up checks unless an observed defect makes them blocking. Do not add new gates indefinitely without explaining the failure they protect.
 
 ## Supervision rules
 
@@ -61,3 +61,7 @@ Required: actual host package discovery and failed-read checkpoint safety. Authe
 ## Follow-ups after evidence
 
 A compact private run receipt and a narrow executable revision/idempotency/checkpoint adapter remain candidates. Build them only around demonstrated failures and measurable benefit. A general agent orchestration framework is outside this beta's scope.
+
+## Portable acceptance outcome
+
+[Recorded evidence](../../evals/HOST-PORTABILITY.md) covers independent exports, resolved packaging review and live exported pull execution in Codex. Claude login is not a core beta requirement. Optional adapter tests and untested host discovery remain explicitly scoped. Latest CI and integration status are visible in the draft PR.

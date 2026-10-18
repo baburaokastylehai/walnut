@@ -11,7 +11,7 @@ node scripts/validate-repo.mjs
 node --test
 ```
 
-Repository validation checks packaging, runtime-reference containment, Markdown links, manifests, fixture shape, demo consistency, the architecture asset and private-identifier fingerprints. The Node tests execute the shipped ledger helper against contiguous, missing, archived, reset and invalid histories. An up-to-date ledger cursor still requires snapshot comparison for direct edits.
+Repository validation checks packaging, runtime-reference containment, Markdown links, manifests, fixture shape, demo consistency, the architecture asset and private-identifier fingerprints. Export tests check independent skill containment, relocated helper execution, deterministic output and refusal to overwrite existing skills. The ledger tests execute the shipped ledger helper against contiguous, missing, archived, reset and invalid histories. An up-to-date ledger cursor still requires snapshot comparison for direct edits.
 
 These checks do not run an AI or publish to Confluence. Valid JSON and passing helper tests do not establish correct semantic judgment.
 

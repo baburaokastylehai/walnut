@@ -1,6 +1,6 @@
 # Working on Walnut
 
-Walnut is a skills plugin with two actions: push and pull. The shipped package is `plugins/walnut/`; runtime references must stay inside it. Start with `docs/PRODUCT.md`, `docs/ARCHITECTURE.md` and the skill relevant to the task. Shared character, state and ledger contracts live in `plugins/walnut/references/`.
+Walnut is a host-neutral skill set with two actions: push and pull. Canonical runtime source is `plugins/walnut/`; Claude packaging is optional. Runtime references must stay inside that source bundle. `node scripts/export-skills.mjs <destination>` produces two self-contained native skill folders; each exported folder must contain all its own references and helper. Start with `docs/PRODUCT.md`, `docs/ARCHITECTURE.md` and the skill relevant to the task. Shared character, state and ledger contracts live in `plugins/walnut/references/`.
 
 Use only fictional examples. Keep private local state, backups, audit evidence and credentials out of the repository. Do not restore stale history after sanitization.
 

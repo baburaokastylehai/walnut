@@ -50,6 +50,12 @@ brief what changed
 
 Walnut's intelligence lives in the middle.
 
+## Host boundary and distribution
+
+Push and pull are host-executed instructions. The host supplies readable sources and references, a private persistent workspace, and authenticated destination tools. Push requires version-aware updates and read-back; pull requires complete reads. Walnut does not authenticate a host, provide its model or bridge tools between AI applications.
+
+The source skills live at `plugins/walnut/skills/{push,pull}/SKILL.md` and can be loaded from an intact checkout. `node scripts/export-skills.mjs <destination-directory>` prepares self-contained `push/` and `pull/` folders with their own references and helper for native skill loaders. The Claude Code marketplace package is an optional adapter over the same source skills. Installation and invocation are host-specific; each intended host needs capability and behavioral validation.
+
 ## The pipeline
 
 ### 1. discover
@@ -411,7 +417,7 @@ The first pull establishes a baseline and gives full project onboarding. Later p
 
 ## v0.3 package and continuity
 
-One `plugins/walnut` package ships both skills. Shared references contain character, project language, destination-state migration and the persistent ledger contract. They are runtime instructions inside the installable directory, not repository-only brand documentation.
+One source package at `plugins/walnut` contains both skills. Shared references contain character, project language, destination-state migration and the persistent ledger contract. They are runtime instructions, not repository-only brand documentation. Exported native skills carry copies of their dependencies; exporting does not introduce another policy implementation.
 
 The candidate ledger is private and temporary. The shared Change Ledger is persisted with verified semantic changes, carrying an epoch, contiguous sequence, stable batch/event identity and provenance. Pull consumes events after its local cursor and also compares current records to detect direct edits. Gaps or missing ledgers fall back to semantic snapshots.
 

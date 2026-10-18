@@ -2,14 +2,47 @@
 
 ## Prerequisites
 
-- Claude Code with plugin support and access to a model capable of using skills and connected tools.
+- An AI host that can read the skill instructions and referenced files, reason over the current conversation and selected project files, and use connected tools.
 - An authenticated Confluence connection in that host. Walnut does not bundle an MCP server, store credentials or authenticate for you.
 - A target page you can read. Push also needs version-aware update and read-back capability; file mirroring needs child-page create/update access.
-- A local project workspace where private state can be saved. Node.js 22+ is needed for repository checks and the optional ledger helper, not ordinary instruction-only use.
+- A local project workspace where private state can be saved. Node.js 22+ is needed for skill export, repository checks and the optional ledger helper, not ordinary instruction-only use.
+
+The host must be able to load the relevant instructions for each run and follow local file references. A chat interface with no project-file or persistent-state access does not meet these requirements. Host-neutral instructions do not mean every host has been tested. See [validation evidence](../evals/BETA-VALIDATION.md) for the paths actually exercised.
 
 Use a disposable page for your first live trial. Read it through the host’s Confluence tools, confirm the returned page title and version, and check that the connection supports updates before running push. If a required capability is missing, Walnut should explain the missing connection rather than claim a sync happened.
 
-## Install
+## Use the skills from a checkout
+
+```sh
+git clone https://github.com/baburaokastylehai/walnut.git
+```
+
+Keep the repository intact. Give your host the checkout path and ask it to read and follow the appropriate file:
+
+- `plugins/walnut/skills/push/SKILL.md` for push;
+- `plugins/walnut/skills/pull/SKILL.md` for pull.
+
+The host must also read the references required by that skill. Copying only `SKILL.md` loses those references. The directory name `plugins/` is the source layout; using the instructions does not require a Claude Code installation.
+
+For a host with a native skill loader, export self-contained skill directories. Run from the checkout:
+
+```sh
+node scripts/export-skills.mjs ./walnut-export
+```
+
+This creates `push/` and `pull/` beneath the destination, each with its own references and helper. Install those folders using the host's skill mechanism. Existing destination `push` or `pull` directories are not overwritten; use a new destination when preparing an upgrade and review the replacement before switching.
+
+### Codex
+
+Codex reads project skills under `.agents/skills/`. Export directly to a project you control, replacing the example path:
+
+```sh
+node scripts/export-skills.mjs /path/to/your-project/.agents/skills
+```
+
+Invoke the installed skills as `$push` and `$pull`, or choose them through the skill selector. Check for existing skills with those names before installation. User-level installation is also available under `~/.agents/skills/`; use the [official Codex skill guide](https://learn.chatgpt.com/docs/build-skills) for discovery and invocation behavior. Loading a skill does not establish that the host has the required Confluence connection.
+
+### Optional Claude Code plugin
 
 ```text
 /plugin marketplace add baburaokastylehai/walnut
@@ -17,6 +50,8 @@ Use a disposable page for your first live trial. Read it through the host’s Co
 ```
 
 Follow the host’s activation/reload instructions. The skills are `/walnut:push` and `/walnut:pull`. For branch development, use `claude --plugin-dir ./plugins/walnut` from the repository root. [Claude Code’s plugin guide](https://code.claude.com/docs/en/plugins) documents local loading and plugin namespacing.
+
+For either installation path, load or export the candidate checkout to test an unmerged branch. The public clone and marketplace default to `main`. Command names depend on the host; `/push` and `/pull` in Walnut's product examples refer to the two actions.
 
 ## Protect local state in every project
 
@@ -37,7 +72,11 @@ Both skills reuse `.walnut/project.json` for the shared destination. Pull’s pe
 
 First pull gives the project story. A saved role alone does not make it recurring. Later pulls compare against a successful checkpoint for the same reader and destination.
 
-## Upgrading from separate push/pull plugins
+## Upgrading
+
+For exported skills, prepare a fresh export, review both folders, and replace the prior installation together through the host's supported process. Keep project state, the target and record IDs intact. Do not activate two installations against the same page at once. Follow your host's refresh instructions before testing the new version.
+
+### From separate Claude Code push/pull plugins
 
 1. Keep the same local workspace, target page and private state. Back up the page and local state privately before a live migration.
 2. Disable or uninstall the old `push@walnut` and `pull@walnut` installations through the host’s plugin manager, so duplicate skills do not run.
