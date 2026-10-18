@@ -26,16 +26,15 @@ diff
 
                 ↓
 
-small internal ledger
+private candidate ledger
 identity + provenance + fingerprints
-not another project document
 
                 ↓
 
 publish / mirror
 ────────────────────────────────────
 
-shared project brain
+shared project brain + persistent Change Ledger
 Confluence first
 other destinations later
 
@@ -409,3 +408,15 @@ Role lenses control:
 They do not create separate role-specific facts.
 
 The first pull establishes a baseline and gives full project onboarding. Later pulls are delta-oriented.
+
+## v0.3 package and continuity
+
+One `plugins/walnut` package ships both skills. Shared references contain character, project language, destination-state migration and the persistent ledger contract. They are runtime instructions inside the installable directory, not repository-only brand documentation.
+
+The candidate ledger is private and temporary. The shared Change Ledger is persisted with verified semantic changes, carrying an epoch, contiguous sequence, stable batch/event identity and provenance. Pull consumes events after its local cursor and also compares current records to detect direct edits. Gaps or missing ledgers fall back to semantic snapshots.
+
+The optional Node helper validates ledger structure and cursor coverage. It does not confirm facts or decide semantic equivalence. These remain host-AI responsibilities.
+
+The main page can update records and events together under a revision guard. Child mirrors require separate writes, with pending-event recovery on partial failure. Read-back verification precedes checkpoint advancement.
+
+See [the ledger contract](../plugins/walnut/references/change-ledger.md), [state contract](../plugins/walnut/references/local-state.md) and [beta limits](LIMITATIONS.md).

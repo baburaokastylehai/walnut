@@ -1,96 +1,26 @@
-# Walnut — versioning and releases
+# Releases and rollback
 
-Walnut uses Semantic Versioning.
+Walnut uses one package version for both skills. v0.3.0 is the public-beta candidate. Minor versions may change behavior during the pre-1.0 phase; patch versions fix compatible behavior or documentation.
 
-```text
-MAJOR.MINOR.PATCH
-```
+Develop on a branch and open a PR. Validate the final commit before merging. Publish a tag/release only after review and a live disposable-page smoke test. Never use a plugin upgrade to reset a shared project record.
 
-For the current pre-1.0 phase:
+## Baselines
 
-- PATCH — fixes or documentation changes that do not intentionally change Walnut's semantic behavior;
-- MINOR — intentional behavior, architecture, or capability changes;
-- MAJOR — reserved for a future stable contract where compatibility guarantees are meaningful.
+The public repository has independent history beginning with a sanitized package snapshot. Historical `archive/v0.1.0` and `v0.2` baselines remain private or local. The legacy repository retains its old history and PR references privately; do not import them into this public repository.
 
-## Baseline
+The beta branch starts from the new root commit on `main`. A private local backup preserves the original history for recovery and must never be published. The new root commit is the public rollback reference until a reviewed release is tagged.
 
-The repository state before the v0.2 work began is preserved at:
+## Validation before merge
 
-```text
-archive/v0.1.0
-```
-
-It points to commit:
-
-```text
-archive/v0.1.0 (sanitized history)
-```
-
-This branch should not receive new commits.
-
-A Git tag/release named `v0.1.0` should point to the same commit when repository settings are configured through a Git client or GitHub interface that supports tag creation.
-
-## Development flow
-
-```text
-main
-  ↑
-pull request
-  ↑
-version branch / feature branch
-```
-
-The v0.2 design and implementation lives on:
-
-```text
-v0.2
-```
-
-Do not develop v0.2 directly on `main`.
-
-## Change discipline
-
-Separate these change types whenever practical:
-
-1. refactor — reorganizes policy without intentionally changing behavior;
-2. behavior — intentionally changes Walnut semantics;
-3. eval — adds or updates expected behavior cases;
-4. docs/brand — changes explanation or voice;
-5. repo — CI, ownership, release, or repository configuration.
-
-This makes regressions easier to diagnose.
-
-## Release checklist
-
-Before a release:
-
-1. relevant eval fixtures pass;
-2. manifests validate;
-3. README describes actual behavior;
-4. changelog is updated;
-5. version metadata is updated;
-6. no private local state is tracked;
-7. destination prerequisites are documented;
-8. the release commit is tagged;
-9. the release is created from the tag.
-
-## Main protection target
-
-When branch protection is enabled, `main` should require:
-
-- changes through pull requests;
-- CODEOWNER review where appropriate;
-- required CI/eval checks;
-- branch up to date before merge when practical;
-- no force pushes;
-- no branch deletion.
-
-CODEOWNERS alone does not enforce review.
+- Run repository validation and Node tests.
+- Review semantic fixtures and response shapes.
+- Check installation from the actual plugin directory; no reference may depend on files outside that directory.
+- On a disposable Confluence page, check first push, no-op push, first pull, recurring pull, direct page edits, a failed read and a connector round trip of the ledger.
+- Confirm no private state, real project examples or audit evidence are tracked.
+- Confirm the README and version describe the package being shipped.
 
 ## Rollback
 
-A release must always be reproducible from its tag.
+Before changing live shared data, retain its page revision and a private state backup. Pin this repository’s clean root commit or locally load a privately retained sanitized earlier package if the beta misbehaves. Restore shared data separately and only after reviewing subsequent edits; a code rollback does not reverse page writes.
 
-Do not rely on a mutable branch name as the only historical reference.
-
-For v0.1.0, `archive/v0.1.0` is the immediate safety copy until the corresponding Git tag is created.
+After a reviewed release is tagged, use that immutable tag for reproducible installs. No release tag is created by this PR. Keep the rollback path until the new version is verified in ordinary use.

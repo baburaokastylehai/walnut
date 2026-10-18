@@ -1,74 +1,89 @@
-# walnut
+# Walnut
 
-your project gets messy. walnut keeps the part that matters.
+**Keep what matters from AI work. Share it with your team.**
 
-Walnut is a Claude Code plugin marketplace with two complementary plugins: **`push`** and **`pull`**.
+Chats wander. Files change. The next person still needs to know what was decided, why, and what moved since they last checked.
 
-## `push` — keep the project brain current
+Walnut keeps that story straight. `/push` carries confirmed project context into a shared project brain. `/pull` catches someone up in the context of their work.
 
-`/push` listens across the current AI conversation, project-context files, and an existing shared destination. It separates confirmed project truth from brainstorming, assistant suggestions, stale context, and duplicates; reconciles what changed; and publishes only the durable updates that actually belong in the project record.
+![Walnut architecture: project sources, reconciliation, a shared project brain, and role-aware briefings.](assets/walnut-architecture.png)
 
-Confluence is the first supported destination.
+## Two commands. One project story.
 
-## `pull` — get caught up
+**Push what stuck.** Work normally with your AI. When something is settled, run `/push`. Walnut checks the conversation, current project docs, and the existing shared record. It adds or reconciles confirmed changes, keeps the history, records a change ledger, and reads the result back. An assistant suggestion does not become a decision just because it sounds useful.
 
-`/pull` reads that same shared project context for the people working on the project.
+**Pull what matters.** Joining a project? `/pull` explains the problem, direction, status, and what matters for your role. Coming back? It shows meaningful changes since your last successful pull. Your role changes the emphasis; important project-wide changes stay visible.
 
-On first use, it asks what role you are playing — design, dev/QA, technical writing, PM, or something else — then explains the problem, current solution, project status, and the parts that matter most to you.
+Nothing changed? Walnut says so and stops.
 
-On later uses, it compares the current project brain with what you last saw and reports only meaningful updates. Role-relevant changes come first; important project-wide changes still appear for visibility.
+> **Public beta · v0.3** — a skills plugin for Claude Code. Confluence is the supported shared destination. Walnut uses the host AI and its existing connection; there is no separate Walnut service.
 
-`/pull` is read-only against the shared project brain. It keeps only a local per-person checkpoint so each teammate can ask, "what changed since I last checked?"
+## Try it
 
-Walnut is designed to preserve existing project history. Upgrading the plugin does not reset an existing Walnut page, renumber its D/R/Q records, or recreate child pages just because the version changed.
-
-## How it thinks
-
-Walnut follows a few rules:
-
-- listen widely. publish carefully.
-- assistant suggestions are not project truth until a human adopts them.
-- recency is evidence, not an automatic winner.
-- reading a project file and mirroring it are separate decisions.
-- when useful context files do not exist, Walnut may ask once whether the host AI should create project-appropriate docs.
-- migration is reconciliation, not reset.
-- after a write, Walnut reads the destination back and verifies it.
-
-The v0.2 product and architecture contracts live in `docs/PRODUCT.md` and `docs/ARCHITECTURE.md`.
-
-## Installing it
+You need Claude Code with plugin support, a working Confluence connection with page read/update capabilities, and a project page you are allowed to maintain. Pull-only readers need read access. Installing Walnut does not connect Confluence for you.
 
 In Claude Code:
 
-    /plugin marketplace add baburaokastylehai/walnut
-    /plugin install push
-    /plugin install pull
+```text
+/plugin marketplace add baburaokastylehai/walnut
+/plugin install walnut@walnut
+```
 
-If you already have the plugin installed, update the marketplace/plugin in Claude Code before running `/push` so it loads the latest version from `main`.
+Claude Code namespaces plugin commands, so the two actions appear as:
 
-The first time `/push` is used in a project, Walnut asks which Confluence page it should maintain and remembers that target locally. That state is ignored by Git.
+```text
+/walnut:push
+/walnut:pull
+```
 
-## Existing Walnut projects
+The shorter `/push` and `/pull` names in the diagram describe those same actions. See the [Claude Code plugin documentation](https://code.claude.com/docs/en/plugins) for the host’s command and installation behavior.
 
-If you've already used `/push`:
+On your first push, give Walnut the exact Confluence page URL. It verifies and remembers the target locally. On pull, describe your part in the project if it is not already clear. Useful existing context is enough; no role form or fixed document template is required.
 
-- keep using the same project;
-- keep the same target Confluence page;
-- update the plugin;
-- run `/push` again.
+To test a branch before it merges, run `claude --plugin-dir ./plugins/walnut` from its checkout. Marketplace installation follows `main`.
 
-Walnut reconciles against what is already there. It should preserve existing IDs, history, and recoverable child-page mappings, then add/refine only what actually changed.
+[Setup and migration](docs/SETUP.md) · [Fictional walkthrough](examples/nightjar/README.md)
 
-## Versioning
+## A small example
 
-The pre-v0.2 baseline is preserved at `archive/v0.1.0`.
+The fictional Nightjar team is building a telescope-booking calendar.
 
-See `docs/VERSIONING.md` for the release and rollback policy.
+```text
+Human: Six places per slot. Show remaining places before booking.
+Assistant: We could send automatic reminders too.
+Human: Let’s discuss availability next.
 
-## Contributing
+/push
+→ saved the slot limit and available-places requirement.
+  reminders stayed out of the shared record.
 
-Use a pull request against `main`.
+/pull — I’m testing this
+→ each slot has six places. for QA, check the last available place
+  and the first booking beyond capacity. the waiting-list question is still open.
+```
 
-`.github/CODEOWNERS` identifies the responsible reviewer. Repository enforcement is configured separately in GitHub; the intended protection rules are documented in `docs/REPOSITORY.md`.
+That QA boundary is an implication of the confirmed limit, not a newly assigned task. The [full walkthrough](examples/nightjar/README.md) includes sources, the shared record, ledger, first pull, recurring pull, and a no-change run. Every example is fictional.
 
-Repository validation runs through `.github/workflows/validate.yml`.
+## What stays dependable
+
+- **Your project’s language.** Walnut learns terms and actors from confirmed context.
+- **History stays traceable.** Reversals supersede earlier decisions. Existing record IDs and child pages survive upgrades.
+- **A shared change ledger.** Push records semantic changes; pull checks those events alongside current records, so manual page edits are still detected.
+- **A personal checkpoint.** Pull remembers what one reader has seen locally. It never writes reader profiles into Confluence.
+- **A restrained voice.** A small update gets a small response. Conflicts and partial writes are stated plainly.
+
+## Know the limits
+
+Walnut is an instruction-driven plugin, not a background sync engine. It only sees sources the host can access. It does not monitor all your chats, authenticate services, enforce access permissions, or guarantee that a model will interpret every change correctly. Review important updates.
+
+Confluence is the only live adapter today. The Markdown walkthrough is a reproducible example, not another supported destination. Long ledgers, connector formatting differences, incomplete reads, and concurrent edits need care; [limitations and recovery](docs/LIMITATIONS.md) explain the boundaries.
+
+Project state lives under `.walnut/` and the legacy `.claude/push-target.local.json`. Add these to your project’s ignore rules before use. **This repository’s `.gitignore` does not protect another project automatically.** Use separate local profiles or checkouts for different people.
+
+## Build with us
+
+[Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Architecture](docs/ARCHITECTURE.md) · [Release and rollback](docs/VERSIONING.md) · [Beta readiness](docs/BETA-READINESS.md)
+
+Run `node scripts/validate-repo.mjs` and `node --test` with Node.js 22 or later. These check the package, shared ledger helper and fixtures; they do not prove a live Confluence run. See [evaluation](evals/README.md).
+
+MIT licensed. Built by [Atharva Shembekar](https://github.com/baburaokastylehai).

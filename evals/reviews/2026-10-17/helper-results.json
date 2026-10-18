@@ -1,0 +1,37 @@
+{
+  "kind": "executable tests of actual shipped helper",
+  "cases": [
+    {
+      "name": "empty legacy initialization stays snapshot without a cursor",
+      "result": "pass"
+    },
+    {
+      "name": "fully archived valid history supports only head cursor",
+      "result": "pass"
+    },
+    {
+      "name": "malformed top-level JSON values always fail closed",
+      "result": "pass"
+    },
+    {
+      "name": "inconsistent bounds fail closed",
+      "result": "pass"
+    },
+    {
+      "name": "all supported actions pass minimal payload",
+      "result": "pass"
+    },
+    {
+      "name": "no-content and whitespace payloads fail closed",
+      "result": "pass"
+    },
+    {
+      "name": "malformed current ledger cannot report an empty safe delta",
+      "result": "pass"
+    },
+    {
+      "name": "cross-epoch cursor cannot reuse same sequence",
+      "result": "pass"
+    }
+  ]
+}
