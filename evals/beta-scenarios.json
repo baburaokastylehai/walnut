@@ -232,5 +232,25 @@
       "if event already exists, verify and clear without duplicate append",
       "retain mismatched evidence and report recovery conflict"
     ]
+  },
+  {
+    "id": "connector-reports-failure-inside-successful-tool-envelope",
+    "skill": "push",
+    "input": {
+      "outerToolIsError": false,
+      "operationPayload": {
+        "ok": false,
+        "reason": "snapshot_stale",
+        "currentSnapshot": {
+          "token": "v:2"
+        }
+      }
+    },
+    "expected": [
+      "treat operation as not persisted",
+      "do not report success or advance push checkpoint",
+      "refetch and reconcile within retry limit",
+      "verify intended batch and resulting revision before accepting any later write"
+    ]
   }
 ]

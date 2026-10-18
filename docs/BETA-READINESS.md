@@ -10,8 +10,8 @@ This is the current release map, not a claim that every gate has passed. Review 
 | Repository checks and Node helper tests | Passing locally and in initial PR CI | Rerun after changes |
 | Independent behavioral review | Completed for selected fictional cases | Five first-pass simulations, eight helper edge cases and four recovery simulations; see [evidence](../evals/reviews/2026-10-17/README.md) |
 | Real host loading | Pending | Load the actual package in Claude Code and verify both skills |
-| Disposable Confluence integration | Waiting for connector access to selected personal site | Preflight rejected before any page creation; then test first/no-op push, first/recurring pull, direct edits, failed reads, concurrency and ledger round trip |
-| Independent public repository | Migration in progress | Publish fresh history; retain the legacy repository privately and verify public access is removed. No Support request is planned; this is access removal, not a full-erasure claim |
+| Disposable Confluence integration | Core live checks passed | [Live evidence](../evals/LIVE-CONNECTOR-VALIDATION.md): ledger round trip, no-op, direct edits, stale writes and controlled mirror recovery; real fault injection remains limited |
+| Independent public repository | Verified | Fresh public history; legacy repository and historical PRs private. Anonymous checks confirm public access is removed under our control. No Support request; no server-erasure claim. |
 
 ## What the harness article changes
 

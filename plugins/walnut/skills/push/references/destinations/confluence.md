@@ -35,3 +35,7 @@ Broken external links should not be presented as healthy resources.
 ## Shared ledger
 
 Read `../../../../references/change-ledger.md`. Preserve the JSON code block through storage-format conversion; do not strip it as formatting noise. If the connector cannot preserve it, stop publication and explain the limitation. Read it from the main page before reconciling or briefing.
+
+## Operation-level results
+
+Inspect the returned operation payload as well as the outer tool status. A call may have no transport error while returning `ok: false`, `snapshot_stale`, a denied permission or another non-persisted result. Treat it as a failed operation. For a stale write, refetch and reconcile within the single-retry concurrency policy; do not report success or advance a checkpoint. Verify the intended records, batch/event identity and resulting revision through read-back before accepting any write.

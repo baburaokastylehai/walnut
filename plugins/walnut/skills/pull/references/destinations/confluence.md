@@ -40,3 +40,7 @@ Page version alone is not semantic change; use it as a signal to inspect content
 ## Shared ledger
 
 Read `../../../../references/change-ledger.md`. Read the JSON code block from the main page and apply the ledger contract. If the connector cannot expose it intact, use semantic snapshot comparison and disclose incomplete continuity when relevant. Pull does not publish or repair ledger data.
+
+## Operation-level results
+
+Inspect the returned operation payload as well as the outer tool status. A call may have no transport error while returning `ok: false`, `snapshot_stale`, a denied permission or another non-persisted result. Treat it as a failed operation. For a stale write, refetch and reconcile within the single-retry concurrency policy; do not report success or advance a checkpoint. Verify the intended records, batch/event identity and resulting revision through read-back before accepting any write.

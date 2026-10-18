@@ -15,13 +15,16 @@ That review found and corrected a missing recovery step: pending mirror events m
 ## Still required before merge/release
 
 - Load the actual package in Claude Code and verify both namespaced skills appear.
-- On a disposable Confluence page, exercise first push, no-op push, first pull, recurring pull and a manual edit without a ledger event.
-- Verify ledger code-block preservation through the connected tool’s actual storage format.
-- Exercise failed reads, concurrent edits and partial mirror-event recovery without losing history or advancing an incomplete reader checkpoint.
-- Verify the legacy repository is private and the replacement public repository contains only independent clean history before declaring public access removed. This does not claim deletion of retained backups or external copies; no Support request is planned.
+- Complete any remaining live failure-injection cases; normal publish/read/no-op/manual-edit cases have now run through the real connector.
+- Complete controlled live failed-required-read and repeated-concurrent-writer fault cases if required for release; current evidence distinguishes these simulations from actual stale-write rejection and mirror recovery.
+- Keep the verified independent/public versus legacy/private separation intact. No claim is made about deletion of retained backups or external copies.
 
-The PR stays draft until these checks are completed. No live project page was used for this validation.
+The PR stays draft while the remaining merge gates are open. The only live test pages contain fictional content.
 
-## Live test preflight
+## Initial live test preflight
 
-A user-selected personal test destination was supplied. The current Atlassian connection rejected access to that site before reading content. No test page was created or changed. The live test remains pending until that site is authorized in the connector; access to another site is never a fallback. Site identifiers and raw access responses stay outside the public repository.
+The first access attempt was denied before page creation. After the personal connection was authorized, a dedicated child test page was created and the checks below were completed. Another site was never used as a fallback. Site identifiers and raw responses stay outside the public repository.
+
+## Connector retest completed
+
+The user-selected personal connection is now authorized. [Live connector evidence](LIVE-CONNECTOR-VALIDATION.md) records publish/read-back, no-op, first/recurring reader behavior, native JSON code-block preservation, direct edits without events, stale-snapshot rejection and controlled cross-page recovery. The parent page was unchanged. The remaining limitations are explicit in that report.
