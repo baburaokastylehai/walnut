@@ -1,0 +1,9 @@
+{
+  "name": "walnut",
+  "version": "0.3.0",
+  "description": "Keep the project story straight. Push confirmed context; pull what changed for you.",
+  "author": {
+    "name": "Atharva Shembekar"
+  },
+  "license": "MIT"
+}

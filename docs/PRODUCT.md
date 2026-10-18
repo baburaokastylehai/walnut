@@ -14,6 +14,8 @@ The working AI should be allowed to work naturally. Walnut's job is not to make 
 
 Walnut sits above that mess and keeps a durable project record straight.
 
+It ships as two host-neutral skills, push and pull. Use them from an intact checkout or export self-contained folders for a host's native skill loader. A Claude Code plugin is an optional installation path. The host supplies access to conversation and project sources, private local state and authenticated Confluence tools; Walnut supplies the reconciliation and briefing instructions. Compatibility is a capability requirement to verify, not a claim that every AI app has been tested.
+
 ## Two directions
 
 Walnut has two complementary jobs:

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "target": {
+    "provider": "confluence",
+    "cloudId": "fictional",
+    "pageId": "nightjar-demo"
+  },
+  "role": "QA",
+  "roleSource": "explicit",
+  "lastPulledAt": "2026-10-17T18:05:00Z",
+  "ledger": {
+    "epoch": "nightjar-fictional-demo-v1",
+    "sequence": 3
+  },
+  "seen": {
+    "D1": "six places per slot",
+    "R1": "show available places before booking",
+    "Q1": "waiting-list policy open"
+  },
+  "children": {}
+}

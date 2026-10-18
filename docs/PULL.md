@@ -1,61 +1,13 @@
-# Walnut pull
+# Pull
 
-`push` keeps the project brain current.
+The first pull explains the current project story. Later pulls show what moved since this reader’s last successful checkpoint.
 
-`pull` helps the team use it.
+Learn a role from an explicit request, a saved lens or clear first-person context. Infer tentatively when that is useful; ask one question when there is no signal. A person can decline a role and receive a general briefing. Source-document authorship does not identify the person asking.
 
-## The job
+A reader profile and a successful pull checkpoint are different things. A role-only profile still needs onboarding. A new role changes emphasis without repeating onboarding; a new destination requires a new baseline.
 
-A PM may spend days in Claude working through a feature: exploring options, settling decisions, refining requirements, and updating Walnut's shared project context.
+Recurring pulls consume contiguous shared-ledger events and compare current records and changed children against saved semantic snapshots. Manual edits may have no ledger event. Missing or broken continuity triggers snapshot comparison and a clear caveat if the old detail is insufficient.
 
-Engineering, QA, design, technical writing, and other PMs should not have to read that chat or reverse-engineer a Confluence page to understand what happened.
+Important project-wide movement stays visible. Implications are labeled as implications; owners and required actions are stated only when sourced. No change gets one sentence.
 
-They should be able to type:
-
-```text
-/pull
-```
-
-and get the project context they need.
-
-## First pull
-
-The first time a person pulls a project, Walnut asks what they are working on it as.
-
-Then it gives them:
-- the problem;
-- the current/proposed solution;
-- where the project stands;
-- the context most relevant to their role;
-- important unresolved questions/dependencies.
-
-This is onboarding from the current project truth.
-
-## Later pulls
-
-Later `/pull` runs answer:
-
-> what changed since I last checked, and what does that mean for me?
-
-Role-relevant changes come first.
-
-Important project-wide changes still appear for visibility even when they do not directly affect that person's work.
-
-If nothing meaningful changed, Walnut says so and stops.
-
-## One brain, many views
-
-The shared project context does not change by role.
-
-A designer, developer, QA engineer, technical writer, and PM all read from the same project truth.
-
-Walnut changes:
-- emphasis;
-- explanation depth;
-- implications highlighted.
-
-It does not create separate truths.
-
-## Project language
-
-Learn the project’s actors, terminology and workflows from its confirmed context. No employer, industry or product is assumed.
+Pull never writes to the shared project record. A failed or incomplete read does not advance the local checkpoint. See the [ledger](../plugins/walnut/references/change-ledger.md), [local state](../plugins/walnut/references/local-state.md), and [fictional walkthrough](../examples/nightjar/README.md).

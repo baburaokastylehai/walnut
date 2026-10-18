@@ -1,0 +1,64 @@
+# Nightjar — fictional shared project brain
+
+A telescope-booking prototype for volunteers. The calendar shows observing slots and remaining places. The team is preparing a small pilot; the waiting-list policy is still open.
+
+## Decisions
+
+- D1 — Decided, not built — Each slot has six places.
+
+## Requirements
+
+- R1 — Show available places before booking.
+
+## Open Questions
+
+- Q1 — Should full slots offer a waiting list?
+
+## Change Ledger
+
+```json
+{
+  "schemaVersion": 1,
+  "epoch": "nightjar-fictional-demo-v1",
+  "baseSequence": 0,
+  "headSequence": 3,
+  "entries": [
+    {
+      "sequence": 1,
+      "eventId": "demo-push-1:1",
+      "batchId": "demo-push-1",
+      "recordId": "D1",
+      "action": "add",
+      "summary": "Set the initial slot limit.",
+      "before": null,
+      "after": "Each slot has six places.",
+      "source": "conversation.md \u2014 explicit human decision or question",
+      "publishedAt": "2026-10-17T18:00:00Z"
+    },
+    {
+      "sequence": 2,
+      "eventId": "demo-push-1:2",
+      "batchId": "demo-push-1",
+      "recordId": "R1",
+      "action": "add",
+      "summary": "Make remaining capacity visible.",
+      "before": null,
+      "after": "Show available places before booking.",
+      "source": "conversation.md \u2014 explicit human decision or question",
+      "publishedAt": "2026-10-17T18:00:00Z"
+    },
+    {
+      "sequence": 3,
+      "eventId": "demo-push-1:3",
+      "batchId": "demo-push-1",
+      "recordId": "Q1",
+      "action": "add",
+      "summary": "Waiting-list policy remains open.",
+      "before": null,
+      "after": "Should full slots offer a waiting list?",
+      "source": "conversation.md \u2014 explicit human decision or question",
+      "publishedAt": "2026-10-17T18:00:00Z"
+    }
+  ]
+}
+```

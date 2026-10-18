@@ -1,0 +1,486 @@
+[
+  {
+    "case": "failed-child-read",
+    "before": {
+      "request": "/pull",
+      "profile": {
+        "schemaVersion": 1,
+        "target": {
+          "provider": "confluence",
+          "cloudId": "fictional",
+          "pageId": "nightjar-demo"
+        },
+        "role": "QA",
+        "roleSource": "explicit",
+        "lastPulledAt": "2026-10-17T18:05:00Z",
+        "ledger": {
+          "epoch": "nightjar-fictional-demo-v1",
+          "sequence": 3
+        },
+        "seen": {
+          "D1": "six places per slot",
+          "R1": "show available places before booking",
+          "Q1": "waiting-list policy open"
+        },
+        "children": {}
+      },
+      "remote": {
+        "main": "# Nightjar \u2014 fictional shared project brain\n\nA telescope-booking prototype for volunteers. The calendar shows observing slots and remaining places. The pilot uses eight places per slot and has no waiting list.\n\n## Decisions\n\n- D2 \u2014 Decided, not built \u2014 Each pilot slot has eight places. Supersedes D1.\n- D3 \u2014 Decided, not built \u2014 No waiting list in the pilot, to keep the booking flow small.\n\n## Requirements\n\n- R1 \u2014 Show available places before booking.\n\n## Resolved Questions\n\n- Q1 \u2014 Resolved by D3: the pilot will not offer a waiting list.\n\n## Historical\n\n- D1 \u2014 Superseded by D2 \u2014 Each slot has six places.\n\n## Change Ledger\n\n```json\n{\n  \"schemaVersion\": 1,\n  \"epoch\": \"nightjar-fictional-demo-v1\",\n  \"baseSequence\": 0,\n  \"headSequence\": 6,\n  \"entries\": [\n    {\n      \"sequence\": 1,\n      \"eventId\": \"demo-push-1:1\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"D1\",\n      \"action\": \"add\",\n      \"summary\": \"Set the initial slot limit.\",\n      \"before\": null,\n      \"after\": \"Each slot has six places.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 2,\n      \"eventId\": \"demo-push-1:2\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"R1\",\n      \"action\": \"add\",\n      \"summary\": \"Make remaining capacity visible.\",\n      \"before\": null,\n      \"after\": \"Show available places before booking.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 3,\n      \"eventId\": \"demo-push-1:3\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"Q1\",\n      \"action\": \"add\",\n      \"summary\": \"Waiting-list policy remains open.\",\n      \"before\": null,\n      \"after\": \"Should full slots offer a waiting list?\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 4,\n      \"eventId\": \"demo-push-2:4\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D2\",\n      \"action\": \"supersede\",\n      \"summary\": \"D2 supersedes D1: raise the pilot slot limit to eight.\",\n      \"before\": \"Six places per slot (D1).\",\n      \"after\": \"Eight places per slot for the pilot (D2).\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 5,\n      \"eventId\": \"demo-push-2:5\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D3\",\n      \"action\": \"add\",\n      \"summary\": \"Keep the pilot booking flow small.\",\n      \"before\": null,\n      \"after\": \"No waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 6,\n      \"eventId\": \"demo-push-2:6\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"Q1\",\n      \"action\": \"resolve\",\n      \"summary\": \"Close the waiting-list question with its decision link.\",\n      \"before\": \"Waiting-list policy undecided.\",\n      \"after\": \"Resolved by D3: no waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    }\n  ]\n}\n```\n",
+        "child": "permission denied"
+      },
+      "requiredChangedChild": "flow-17"
+    },
+    "actions": [
+      {
+        "operation": [
+          "read_local",
+          [
+            "profile"
+          ]
+        ],
+        "result": {
+          "profile": {
+            "schemaVersion": 1,
+            "target": {
+              "provider": "confluence",
+              "cloudId": "fictional",
+              "pageId": "nightjar-demo"
+            },
+            "role": "QA",
+            "roleSource": "explicit",
+            "lastPulledAt": "2026-10-17T18:05:00Z",
+            "ledger": {
+              "epoch": "nightjar-fictional-demo-v1",
+              "sequence": 3
+            },
+            "seen": {
+              "D1": "six places per slot",
+              "R1": "show available places before booking",
+              "Q1": "waiting-list policy open"
+            },
+            "children": {}
+          }
+        }
+      },
+      {
+        "operation": [
+          "read_main"
+        ],
+        "result": "# Nightjar \u2014 fictional shared project brain\n\nA telescope-booking prototype for volunteers. The calendar shows observing slots and remaining places. The pilot uses eight places per slot and has no waiting list.\n\n## Decisions\n\n- D2 \u2014 Decided, not built \u2014 Each pilot slot has eight places. Supersedes D1.\n- D3 \u2014 Decided, not built \u2014 No waiting list in the pilot, to keep the booking flow small.\n\n## Requirements\n\n- R1 \u2014 Show available places before booking.\n\n## Resolved Questions\n\n- Q1 \u2014 Resolved by D3: the pilot will not offer a waiting list.\n\n## Historical\n\n- D1 \u2014 Superseded by D2 \u2014 Each slot has six places.\n\n## Change Ledger\n\n```json\n{\n  \"schemaVersion\": 1,\n  \"epoch\": \"nightjar-fictional-demo-v1\",\n  \"baseSequence\": 0,\n  \"headSequence\": 6,\n  \"entries\": [\n    {\n      \"sequence\": 1,\n      \"eventId\": \"demo-push-1:1\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"D1\",\n      \"action\": \"add\",\n      \"summary\": \"Set the initial slot limit.\",\n      \"before\": null,\n      \"after\": \"Each slot has six places.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 2,\n      \"eventId\": \"demo-push-1:2\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"R1\",\n      \"action\": \"add\",\n      \"summary\": \"Make remaining capacity visible.\",\n      \"before\": null,\n      \"after\": \"Show available places before booking.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 3,\n      \"eventId\": \"demo-push-1:3\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"Q1\",\n      \"action\": \"add\",\n      \"summary\": \"Waiting-list policy remains open.\",\n      \"before\": null,\n      \"after\": \"Should full slots offer a waiting list?\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 4,\n      \"eventId\": \"demo-push-2:4\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D2\",\n      \"action\": \"supersede\",\n      \"summary\": \"D2 supersedes D1: raise the pilot slot limit to eight.\",\n      \"before\": \"Six places per slot (D1).\",\n      \"after\": \"Eight places per slot for the pilot (D2).\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 5,\n      \"eventId\": \"demo-push-2:5\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D3\",\n      \"action\": \"add\",\n      \"summary\": \"Keep the pilot booking flow small.\",\n      \"before\": null,\n      \"after\": \"No waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 6,\n      \"eventId\": \"demo-push-2:6\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"Q1\",\n      \"action\": \"resolve\",\n      \"summary\": \"Close the waiting-list question with its decision link.\",\n      \"before\": \"Waiting-list policy undecided.\",\n      \"after\": \"Resolved by D3: no waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    }\n  ]\n}\n```\n"
+      },
+      {
+        "operation": [
+          "read_child"
+        ],
+        "result": {
+          "error": "permission denied"
+        }
+      }
+    ],
+    "after": {
+      "request": "/pull",
+      "profile": {
+        "schemaVersion": 1,
+        "target": {
+          "provider": "confluence",
+          "cloudId": "fictional",
+          "pageId": "nightjar-demo"
+        },
+        "role": "QA",
+        "roleSource": "explicit",
+        "lastPulledAt": "2026-10-17T18:05:00Z",
+        "ledger": {
+          "epoch": "nightjar-fictional-demo-v1",
+          "sequence": 3
+        },
+        "seen": {
+          "D1": "six places per slot",
+          "R1": "show available places before booking",
+          "Q1": "waiting-list policy open"
+        },
+        "children": {}
+      },
+      "remote": {
+        "main": "# Nightjar \u2014 fictional shared project brain\n\nA telescope-booking prototype for volunteers. The calendar shows observing slots and remaining places. The pilot uses eight places per slot and has no waiting list.\n\n## Decisions\n\n- D2 \u2014 Decided, not built \u2014 Each pilot slot has eight places. Supersedes D1.\n- D3 \u2014 Decided, not built \u2014 No waiting list in the pilot, to keep the booking flow small.\n\n## Requirements\n\n- R1 \u2014 Show available places before booking.\n\n## Resolved Questions\n\n- Q1 \u2014 Resolved by D3: the pilot will not offer a waiting list.\n\n## Historical\n\n- D1 \u2014 Superseded by D2 \u2014 Each slot has six places.\n\n## Change Ledger\n\n```json\n{\n  \"schemaVersion\": 1,\n  \"epoch\": \"nightjar-fictional-demo-v1\",\n  \"baseSequence\": 0,\n  \"headSequence\": 6,\n  \"entries\": [\n    {\n      \"sequence\": 1,\n      \"eventId\": \"demo-push-1:1\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"D1\",\n      \"action\": \"add\",\n      \"summary\": \"Set the initial slot limit.\",\n      \"before\": null,\n      \"after\": \"Each slot has six places.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 2,\n      \"eventId\": \"demo-push-1:2\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"R1\",\n      \"action\": \"add\",\n      \"summary\": \"Make remaining capacity visible.\",\n      \"before\": null,\n      \"after\": \"Show available places before booking.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 3,\n      \"eventId\": \"demo-push-1:3\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"Q1\",\n      \"action\": \"add\",\n      \"summary\": \"Waiting-list policy remains open.\",\n      \"before\": null,\n      \"after\": \"Should full slots offer a waiting list?\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 4,\n      \"eventId\": \"demo-push-2:4\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D2\",\n      \"action\": \"supersede\",\n      \"summary\": \"D2 supersedes D1: raise the pilot slot limit to eight.\",\n      \"before\": \"Six places per slot (D1).\",\n      \"after\": \"Eight places per slot for the pilot (D2).\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 5,\n      \"eventId\": \"demo-push-2:5\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D3\",\n      \"action\": \"add\",\n      \"summary\": \"Keep the pilot booking flow small.\",\n      \"before\": null,\n      \"after\": \"No waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 6,\n      \"eventId\": \"demo-push-2:6\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"Q1\",\n      \"action\": \"resolve\",\n      \"summary\": \"Close the waiting-list question with its decision link.\",\n      \"before\": \"Waiting-list policy undecided.\",\n      \"after\": \"Resolved by D3: no waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    }\n  ]\n}\n```\n",
+        "child": "permission denied"
+      },
+      "requiredChangedChild": "flow-17"
+    },
+    "response": "The pilot now uses eight places per slot and no waiting list. I could not read the changed booking-flow mirror, so this briefing is partial. Access to that page needs fixing before I can finish the comparison."
+  },
+  {
+    "case": "mirror-event-partial",
+    "before": {
+      "request": "/push",
+      "profile": {
+        "lastSuccessfulPush": "unchanged-checkpoint"
+      },
+      "remote": {
+        "main": "# Nightjar \u2014 fictional shared project brain\n\nA telescope-booking prototype for volunteers. The calendar shows observing slots and remaining places. The pilot uses eight places per slot and has no waiting list.\n\n## Decisions\n\n- D2 \u2014 Decided, not built \u2014 Each pilot slot has eight places. Supersedes D1.\n- D3 \u2014 Decided, not built \u2014 No waiting list in the pilot, to keep the booking flow small.\n\n## Requirements\n\n- R1 \u2014 Show available places before booking.\n\n## Resolved Questions\n\n- Q1 \u2014 Resolved by D3: the pilot will not offer a waiting list.\n\n## Historical\n\n- D1 \u2014 Superseded by D2 \u2014 Each slot has six places.\n\n## Change Ledger\n\n```json\n{\n  \"schemaVersion\": 1,\n  \"epoch\": \"nightjar-fictional-demo-v1\",\n  \"baseSequence\": 0,\n  \"headSequence\": 6,\n  \"entries\": [\n    {\n      \"sequence\": 1,\n      \"eventId\": \"demo-push-1:1\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"D1\",\n      \"action\": \"add\",\n      \"summary\": \"Set the initial slot limit.\",\n      \"before\": null,\n      \"after\": \"Each slot has six places.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 2,\n      \"eventId\": \"demo-push-1:2\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"R1\",\n      \"action\": \"add\",\n      \"summary\": \"Make remaining capacity visible.\",\n      \"before\": null,\n      \"after\": \"Show available places before booking.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 3,\n      \"eventId\": \"demo-push-1:3\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"Q1\",\n      \"action\": \"add\",\n      \"summary\": \"Waiting-list policy remains open.\",\n      \"before\": null,\n      \"after\": \"Should full slots offer a waiting list?\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 4,\n      \"eventId\": \"demo-push-2:4\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D2\",\n      \"action\": \"supersede\",\n      \"summary\": \"D2 supersedes D1: raise the pilot slot limit to eight.\",\n      \"before\": \"Six places per slot (D1).\",\n      \"after\": \"Eight places per slot for the pilot (D2).\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 5,\n      \"eventId\": \"demo-push-2:5\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D3\",\n      \"action\": \"add\",\n      \"summary\": \"Keep the pilot booking flow small.\",\n      \"before\": null,\n      \"after\": \"No waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 6,\n      \"eventId\": \"demo-push-2:6\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"Q1\",\n      \"action\": \"resolve\",\n      \"summary\": \"Close the waiting-list question with its decision link.\",\n      \"before\": \"Waiting-list policy undecided.\",\n      \"after\": \"Resolved by D3: no waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    }\n  ]\n}\n```\n",
+        "child": "fictional revised flow",
+        "childVerified": true,
+        "mainRevisions": [
+          7,
+          8,
+          9
+        ]
+      },
+      "pending": {
+        "batchId": "fake-mirror-1",
+        "event": {
+          "recordId": "flow-17",
+          "action": "mirror",
+          "before": "old flow",
+          "after": "revised flow"
+        }
+      }
+    },
+    "actions": [
+      {
+        "operation": [
+          "read_local",
+          [
+            "pending",
+            "profile"
+          ]
+        ],
+        "result": {
+          "pending": {
+            "batchId": "fake-mirror-1",
+            "event": {
+              "recordId": "flow-17",
+              "action": "mirror",
+              "before": "old flow",
+              "after": "revised flow"
+            }
+          },
+          "profile": {
+            "lastSuccessfulPush": "unchanged-checkpoint"
+          }
+        }
+      },
+      {
+        "operation": [
+          "read_child"
+        ],
+        "result": {
+          "body": "fictional revised flow",
+          "verified": true
+        }
+      },
+      {
+        "operation": [
+          "revision_guard",
+          1,
+          7
+        ],
+        "result": {
+          "expected": 7,
+          "actual": 8,
+          "allow": false
+        }
+      },
+      {
+        "operation": [
+          "read_main"
+        ],
+        "result": "# Nightjar \u2014 fictional shared project brain\n\nA telescope-booking prototype for volunteers. The calendar shows observing slots and remaining places. The pilot uses eight places per slot and has no waiting list.\n\n## Decisions\n\n- D2 \u2014 Decided, not built \u2014 Each pilot slot has eight places. Supersedes D1.\n- D3 \u2014 Decided, not built \u2014 No waiting list in the pilot, to keep the booking flow small.\n\n## Requirements\n\n- R1 \u2014 Show available places before booking.\n\n## Resolved Questions\n\n- Q1 \u2014 Resolved by D3: the pilot will not offer a waiting list.\n\n## Historical\n\n- D1 \u2014 Superseded by D2 \u2014 Each slot has six places.\n\n## Change Ledger\n\n```json\n{\n  \"schemaVersion\": 1,\n  \"epoch\": \"nightjar-fictional-demo-v1\",\n  \"baseSequence\": 0,\n  \"headSequence\": 6,\n  \"entries\": [\n    {\n      \"sequence\": 1,\n      \"eventId\": \"demo-push-1:1\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"D1\",\n      \"action\": \"add\",\n      \"summary\": \"Set the initial slot limit.\",\n      \"before\": null,\n      \"after\": \"Each slot has six places.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 2,\n      \"eventId\": \"demo-push-1:2\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"R1\",\n      \"action\": \"add\",\n      \"summary\": \"Make remaining capacity visible.\",\n      \"before\": null,\n      \"after\": \"Show available places before booking.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 3,\n      \"eventId\": \"demo-push-1:3\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"Q1\",\n      \"action\": \"add\",\n      \"summary\": \"Waiting-list policy remains open.\",\n      \"before\": null,\n      \"after\": \"Should full slots offer a waiting list?\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 4,\n      \"eventId\": \"demo-push-2:4\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D2\",\n      \"action\": \"supersede\",\n      \"summary\": \"D2 supersedes D1: raise the pilot slot limit to eight.\",\n      \"before\": \"Six places per slot (D1).\",\n      \"after\": \"Eight places per slot for the pilot (D2).\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 5,\n      \"eventId\": \"demo-push-2:5\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D3\",\n      \"action\": \"add\",\n      \"summary\": \"Keep the pilot booking flow small.\",\n      \"before\": null,\n      \"after\": \"No waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 6,\n      \"eventId\": \"demo-push-2:6\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"Q1\",\n      \"action\": \"resolve\",\n      \"summary\": \"Close the waiting-list question with its decision link.\",\n      \"before\": \"Waiting-list policy undecided.\",\n      \"after\": \"Resolved by D3: no waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    }\n  ]\n}\n```\n"
+      },
+      {
+        "operation": [
+          "revision_guard",
+          2,
+          8
+        ],
+        "result": {
+          "expected": 8,
+          "actual": 9,
+          "allow": false
+        }
+      }
+    ],
+    "after": {
+      "request": "/push",
+      "profile": {
+        "lastSuccessfulPush": "unchanged-checkpoint"
+      },
+      "remote": {
+        "main": "# Nightjar \u2014 fictional shared project brain\n\nA telescope-booking prototype for volunteers. The calendar shows observing slots and remaining places. The pilot uses eight places per slot and has no waiting list.\n\n## Decisions\n\n- D2 \u2014 Decided, not built \u2014 Each pilot slot has eight places. Supersedes D1.\n- D3 \u2014 Decided, not built \u2014 No waiting list in the pilot, to keep the booking flow small.\n\n## Requirements\n\n- R1 \u2014 Show available places before booking.\n\n## Resolved Questions\n\n- Q1 \u2014 Resolved by D3: the pilot will not offer a waiting list.\n\n## Historical\n\n- D1 \u2014 Superseded by D2 \u2014 Each slot has six places.\n\n## Change Ledger\n\n```json\n{\n  \"schemaVersion\": 1,\n  \"epoch\": \"nightjar-fictional-demo-v1\",\n  \"baseSequence\": 0,\n  \"headSequence\": 6,\n  \"entries\": [\n    {\n      \"sequence\": 1,\n      \"eventId\": \"demo-push-1:1\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"D1\",\n      \"action\": \"add\",\n      \"summary\": \"Set the initial slot limit.\",\n      \"before\": null,\n      \"after\": \"Each slot has six places.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 2,\n      \"eventId\": \"demo-push-1:2\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"R1\",\n      \"action\": \"add\",\n      \"summary\": \"Make remaining capacity visible.\",\n      \"before\": null,\n      \"after\": \"Show available places before booking.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 3,\n      \"eventId\": \"demo-push-1:3\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"Q1\",\n      \"action\": \"add\",\n      \"summary\": \"Waiting-list policy remains open.\",\n      \"before\": null,\n      \"after\": \"Should full slots offer a waiting list?\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 4,\n      \"eventId\": \"demo-push-2:4\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D2\",\n      \"action\": \"supersede\",\n      \"summary\": \"D2 supersedes D1: raise the pilot slot limit to eight.\",\n      \"before\": \"Six places per slot (D1).\",\n      \"after\": \"Eight places per slot for the pilot (D2).\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 5,\n      \"eventId\": \"demo-push-2:5\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D3\",\n      \"action\": \"add\",\n      \"summary\": \"Keep the pilot booking flow small.\",\n      \"before\": null,\n      \"after\": \"No waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 6,\n      \"eventId\": \"demo-push-2:6\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"Q1\",\n      \"action\": \"resolve\",\n      \"summary\": \"Close the waiting-list question with its decision link.\",\n      \"before\": \"Waiting-list policy undecided.\",\n      \"after\": \"Resolved by D3: no waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    }\n  ]\n}\n```\n",
+        "child": "fictional revised flow",
+        "childVerified": true,
+        "mainRevisions": [
+          7,
+          8,
+          9
+        ]
+      },
+      "pending": {
+        "batchId": "fake-mirror-1",
+        "event": {
+          "recordId": "flow-17",
+          "action": "mirror",
+          "before": "old flow",
+          "after": "revised flow"
+        }
+      }
+    },
+    "response": "The mirror was updated, but I could not record its change on the main page because that page kept changing. The push is partial; its pending ledger event needs recovery."
+  },
+  {
+    "case": "target-conflict",
+    "before": {
+      "request": "/push",
+      "commonTarget": {
+        "cloudId": "fictional",
+        "pageId": "one"
+      },
+      "legacyTarget": {
+        "cloudId": "fictional",
+        "pageId": "two"
+      },
+      "mirrorMappings": {
+        "requirements.md": "child-17"
+      },
+      "profile": null,
+      "remote": {
+        "main": "# Nightjar \u2014 fictional shared project brain\n\nA telescope-booking prototype for volunteers. The calendar shows observing slots and remaining places. The team is preparing a small pilot; the waiting-list policy is still open.\n\n## Decisions\n\n- D1 \u2014 Decided, not built \u2014 Each slot has six places.\n\n## Requirements\n\n- R1 \u2014 Show available places before booking.\n\n## Open Questions\n\n- Q1 \u2014 Should full slots offer a waiting list?\n\n## Change Ledger\n\n```json\n{\n  \"schemaVersion\": 1,\n  \"epoch\": \"nightjar-fictional-demo-v1\",\n  \"baseSequence\": 0,\n  \"headSequence\": 3,\n  \"entries\": [\n    {\n      \"sequence\": 1,\n      \"eventId\": \"demo-push-1:1\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"D1\",\n      \"action\": \"add\",\n      \"summary\": \"Set the initial slot limit.\",\n      \"before\": null,\n      \"after\": \"Each slot has six places.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 2,\n      \"eventId\": \"demo-push-1:2\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"R1\",\n      \"action\": \"add\",\n      \"summary\": \"Make remaining capacity visible.\",\n      \"before\": null,\n      \"after\": \"Show available places before booking.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 3,\n      \"eventId\": \"demo-push-1:3\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"Q1\",\n      \"action\": \"add\",\n      \"summary\": \"Waiting-list policy remains open.\",\n      \"before\": null,\n      \"after\": \"Should full slots offer a waiting list?\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    }\n  ]\n}\n```\n"
+      }
+    },
+    "actions": [
+      {
+        "operation": [
+          "read_local",
+          [
+            "commonTarget",
+            "legacyTarget",
+            "mirrorMappings"
+          ]
+        ],
+        "result": {
+          "commonTarget": {
+            "cloudId": "fictional",
+            "pageId": "one"
+          },
+          "legacyTarget": {
+            "cloudId": "fictional",
+            "pageId": "two"
+          },
+          "mirrorMappings": {
+            "requirements.md": "child-17"
+          }
+        }
+      }
+    ],
+    "after": {
+      "request": "/push",
+      "commonTarget": {
+        "cloudId": "fictional",
+        "pageId": "one"
+      },
+      "legacyTarget": {
+        "cloudId": "fictional",
+        "pageId": "two"
+      },
+      "mirrorMappings": {
+        "requirements.md": "child-17"
+      },
+      "profile": null,
+      "remote": {
+        "main": "# Nightjar \u2014 fictional shared project brain\n\nA telescope-booking prototype for volunteers. The calendar shows observing slots and remaining places. The team is preparing a small pilot; the waiting-list policy is still open.\n\n## Decisions\n\n- D1 \u2014 Decided, not built \u2014 Each slot has six places.\n\n## Requirements\n\n- R1 \u2014 Show available places before booking.\n\n## Open Questions\n\n- Q1 \u2014 Should full slots offer a waiting list?\n\n## Change Ledger\n\n```json\n{\n  \"schemaVersion\": 1,\n  \"epoch\": \"nightjar-fictional-demo-v1\",\n  \"baseSequence\": 0,\n  \"headSequence\": 3,\n  \"entries\": [\n    {\n      \"sequence\": 1,\n      \"eventId\": \"demo-push-1:1\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"D1\",\n      \"action\": \"add\",\n      \"summary\": \"Set the initial slot limit.\",\n      \"before\": null,\n      \"after\": \"Each slot has six places.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 2,\n      \"eventId\": \"demo-push-1:2\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"R1\",\n      \"action\": \"add\",\n      \"summary\": \"Make remaining capacity visible.\",\n      \"before\": null,\n      \"after\": \"Show available places before booking.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 3,\n      \"eventId\": \"demo-push-1:3\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"Q1\",\n      \"action\": \"add\",\n      \"summary\": \"Waiting-list policy remains open.\",\n      \"before\": null,\n      \"after\": \"Should full slots offer a waiting list?\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    }\n  ]\n}\n```\n"
+      }
+    },
+    "response": "I found two saved destinations: fictional/one and fictional/two. Which page should Walnut use?"
+  },
+  {
+    "case": "temporary-role-switch",
+    "before": {
+      "request": "Show me the design angle this time.",
+      "profile": {
+        "schemaVersion": 1,
+        "target": {
+          "provider": "confluence",
+          "cloudId": "fictional",
+          "pageId": "nightjar-demo"
+        },
+        "role": "QA",
+        "roleSource": "explicit",
+        "lastPulledAt": "2026-10-17T18:05:00Z",
+        "ledger": {
+          "epoch": "nightjar-fictional-demo-v1",
+          "sequence": 3
+        },
+        "seen": {
+          "D1": "six places per slot",
+          "R1": "show available places before booking",
+          "Q1": "waiting-list policy open"
+        },
+        "children": {}
+      },
+      "remote": {
+        "main": "# Nightjar \u2014 fictional shared project brain\n\nA telescope-booking prototype for volunteers. The calendar shows observing slots and remaining places. The pilot uses eight places per slot and has no waiting list.\n\n## Decisions\n\n- D2 \u2014 Decided, not built \u2014 Each pilot slot has eight places. Supersedes D1.\n- D3 \u2014 Decided, not built \u2014 No waiting list in the pilot, to keep the booking flow small.\n\n## Requirements\n\n- R1 \u2014 Show available places before booking.\n\n## Resolved Questions\n\n- Q1 \u2014 Resolved by D3: the pilot will not offer a waiting list.\n\n## Historical\n\n- D1 \u2014 Superseded by D2 \u2014 Each slot has six places.\n\n## Change Ledger\n\n```json\n{\n  \"schemaVersion\": 1,\n  \"epoch\": \"nightjar-fictional-demo-v1\",\n  \"baseSequence\": 0,\n  \"headSequence\": 6,\n  \"entries\": [\n    {\n      \"sequence\": 1,\n      \"eventId\": \"demo-push-1:1\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"D1\",\n      \"action\": \"add\",\n      \"summary\": \"Set the initial slot limit.\",\n      \"before\": null,\n      \"after\": \"Each slot has six places.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 2,\n      \"eventId\": \"demo-push-1:2\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"R1\",\n      \"action\": \"add\",\n      \"summary\": \"Make remaining capacity visible.\",\n      \"before\": null,\n      \"after\": \"Show available places before booking.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 3,\n      \"eventId\": \"demo-push-1:3\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"Q1\",\n      \"action\": \"add\",\n      \"summary\": \"Waiting-list policy remains open.\",\n      \"before\": null,\n      \"after\": \"Should full slots offer a waiting list?\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 4,\n      \"eventId\": \"demo-push-2:4\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D2\",\n      \"action\": \"supersede\",\n      \"summary\": \"D2 supersedes D1: raise the pilot slot limit to eight.\",\n      \"before\": \"Six places per slot (D1).\",\n      \"after\": \"Eight places per slot for the pilot (D2).\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 5,\n      \"eventId\": \"demo-push-2:5\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D3\",\n      \"action\": \"add\",\n      \"summary\": \"Keep the pilot booking flow small.\",\n      \"before\": null,\n      \"after\": \"No waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 6,\n      \"eventId\": \"demo-push-2:6\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"Q1\",\n      \"action\": \"resolve\",\n      \"summary\": \"Close the waiting-list question with its decision link.\",\n      \"before\": \"Waiting-list policy undecided.\",\n      \"after\": \"Resolved by D3: no waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    }\n  ]\n}\n```\n"
+      }
+    },
+    "actions": [
+      {
+        "operation": [
+          "read_local",
+          [
+            "profile"
+          ]
+        ],
+        "result": {
+          "profile": {
+            "schemaVersion": 1,
+            "target": {
+              "provider": "confluence",
+              "cloudId": "fictional",
+              "pageId": "nightjar-demo"
+            },
+            "role": "QA",
+            "roleSource": "explicit",
+            "lastPulledAt": "2026-10-17T20:00:00Z",
+            "ledger": {
+              "epoch": "nightjar-fictional-demo-v1",
+              "sequence": 6
+            },
+            "seen": {
+              "D1": "superseded by D2: six places per slot",
+              "D2": "eight places per pilot slot",
+              "D3": "no waiting list in pilot",
+              "R1": "show available places before booking",
+              "Q1": "resolved by D3: no waiting list in pilot"
+            },
+            "children": {}
+          }
+        }
+      },
+      {
+        "operation": [
+          "read_main"
+        ],
+        "result": "# Nightjar \u2014 fictional shared project brain\n\nA telescope-booking prototype for volunteers. The calendar shows observing slots and remaining places. The pilot uses eight places per slot and has no waiting list.\n\n## Decisions\n\n- D2 \u2014 Decided, not built \u2014 Each pilot slot has eight places. Supersedes D1.\n- D3 \u2014 Decided, not built \u2014 No waiting list in the pilot, to keep the booking flow small.\n\n## Requirements\n\n- R1 \u2014 Show available places before booking.\n\n## Resolved Questions\n\n- Q1 \u2014 Resolved by D3: the pilot will not offer a waiting list.\n\n## Historical\n\n- D1 \u2014 Superseded by D2 \u2014 Each slot has six places.\n\n## Change Ledger\n\n```json\n{\n  \"schemaVersion\": 1,\n  \"epoch\": \"nightjar-fictional-demo-v1\",\n  \"baseSequence\": 0,\n  \"headSequence\": 6,\n  \"entries\": [\n    {\n      \"sequence\": 1,\n      \"eventId\": \"demo-push-1:1\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"D1\",\n      \"action\": \"add\",\n      \"summary\": \"Set the initial slot limit.\",\n      \"before\": null,\n      \"after\": \"Each slot has six places.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 2,\n      \"eventId\": \"demo-push-1:2\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"R1\",\n      \"action\": \"add\",\n      \"summary\": \"Make remaining capacity visible.\",\n      \"before\": null,\n      \"after\": \"Show available places before booking.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 3,\n      \"eventId\": \"demo-push-1:3\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"Q1\",\n      \"action\": \"add\",\n      \"summary\": \"Waiting-list policy remains open.\",\n      \"before\": null,\n      \"after\": \"Should full slots offer a waiting list?\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 4,\n      \"eventId\": \"demo-push-2:4\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D2\",\n      \"action\": \"supersede\",\n      \"summary\": \"D2 supersedes D1: raise the pilot slot limit to eight.\",\n      \"before\": \"Six places per slot (D1).\",\n      \"after\": \"Eight places per slot for the pilot (D2).\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 5,\n      \"eventId\": \"demo-push-2:5\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D3\",\n      \"action\": \"add\",\n      \"summary\": \"Keep the pilot booking flow small.\",\n      \"before\": null,\n      \"after\": \"No waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 6,\n      \"eventId\": \"demo-push-2:6\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"Q1\",\n      \"action\": \"resolve\",\n      \"summary\": \"Close the waiting-list question with its decision link.\",\n      \"before\": \"Waiting-list policy undecided.\",\n      \"after\": \"Resolved by D3: no waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    }\n  ]\n}\n```\n"
+      }
+    ],
+    "after": {
+      "request": "Show me the design angle this time.",
+      "profile": {
+        "schemaVersion": 1,
+        "target": {
+          "provider": "confluence",
+          "cloudId": "fictional",
+          "pageId": "nightjar-demo"
+        },
+        "role": "QA",
+        "roleSource": "explicit",
+        "lastPulledAt": "2026-10-17T20:00:00Z",
+        "ledger": {
+          "epoch": "nightjar-fictional-demo-v1",
+          "sequence": 6
+        },
+        "seen": {
+          "D1": "superseded by D2: six places per slot",
+          "D2": "eight places per pilot slot",
+          "D3": "no waiting list in pilot",
+          "R1": "show available places before booking",
+          "Q1": "resolved by D3: no waiting list in pilot"
+        },
+        "children": {}
+      },
+      "remote": {
+        "main": "# Nightjar \u2014 fictional shared project brain\n\nA telescope-booking prototype for volunteers. The calendar shows observing slots and remaining places. The pilot uses eight places per slot and has no waiting list.\n\n## Decisions\n\n- D2 \u2014 Decided, not built \u2014 Each pilot slot has eight places. Supersedes D1.\n- D3 \u2014 Decided, not built \u2014 No waiting list in the pilot, to keep the booking flow small.\n\n## Requirements\n\n- R1 \u2014 Show available places before booking.\n\n## Resolved Questions\n\n- Q1 \u2014 Resolved by D3: the pilot will not offer a waiting list.\n\n## Historical\n\n- D1 \u2014 Superseded by D2 \u2014 Each slot has six places.\n\n## Change Ledger\n\n```json\n{\n  \"schemaVersion\": 1,\n  \"epoch\": \"nightjar-fictional-demo-v1\",\n  \"baseSequence\": 0,\n  \"headSequence\": 6,\n  \"entries\": [\n    {\n      \"sequence\": 1,\n      \"eventId\": \"demo-push-1:1\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"D1\",\n      \"action\": \"add\",\n      \"summary\": \"Set the initial slot limit.\",\n      \"before\": null,\n      \"after\": \"Each slot has six places.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 2,\n      \"eventId\": \"demo-push-1:2\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"R1\",\n      \"action\": \"add\",\n      \"summary\": \"Make remaining capacity visible.\",\n      \"before\": null,\n      \"after\": \"Show available places before booking.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 3,\n      \"eventId\": \"demo-push-1:3\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"Q1\",\n      \"action\": \"add\",\n      \"summary\": \"Waiting-list policy remains open.\",\n      \"before\": null,\n      \"after\": \"Should full slots offer a waiting list?\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 4,\n      \"eventId\": \"demo-push-2:4\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D2\",\n      \"action\": \"supersede\",\n      \"summary\": \"D2 supersedes D1: raise the pilot slot limit to eight.\",\n      \"before\": \"Six places per slot (D1).\",\n      \"after\": \"Eight places per slot for the pilot (D2).\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 5,\n      \"eventId\": \"demo-push-2:5\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D3\",\n      \"action\": \"add\",\n      \"summary\": \"Keep the pilot booking flow small.\",\n      \"before\": null,\n      \"after\": \"No waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 6,\n      \"eventId\": \"demo-push-2:6\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"Q1\",\n      \"action\": \"resolve\",\n      \"summary\": \"Close the waiting-list question with its decision link.\",\n      \"before\": \"Waiting-list policy undecided.\",\n      \"after\": \"Resolved by D3: no waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    }\n  ]\n}\n```\n"
+      }
+    },
+    "response": "The pilot now allows eight places per slot, up from six. It will not offer a waiting list, which also closes the open waiting-list question. For design, that likely changes the capacity states to account for; the full-slot flow can stay within booking rather than introducing a queue."
+  },
+  {
+    "case": "uncertain-write-response",
+    "before": {
+      "request": "/push",
+      "profile": null,
+      "pending": {
+        "batchId": "demo-push-2"
+      },
+      "remote": {
+        "main": "# Nightjar \u2014 fictional shared project brain\n\nA telescope-booking prototype for volunteers. The calendar shows observing slots and remaining places. The pilot uses eight places per slot and has no waiting list.\n\n## Decisions\n\n- D2 \u2014 Decided, not built \u2014 Each pilot slot has eight places. Supersedes D1.\n- D3 \u2014 Decided, not built \u2014 No waiting list in the pilot, to keep the booking flow small.\n\n## Requirements\n\n- R1 \u2014 Show available places before booking.\n\n## Resolved Questions\n\n- Q1 \u2014 Resolved by D3: the pilot will not offer a waiting list.\n\n## Historical\n\n- D1 \u2014 Superseded by D2 \u2014 Each slot has six places.\n\n## Change Ledger\n\n```json\n{\n  \"schemaVersion\": 1,\n  \"epoch\": \"nightjar-fictional-demo-v1\",\n  \"baseSequence\": 0,\n  \"headSequence\": 6,\n  \"entries\": [\n    {\n      \"sequence\": 1,\n      \"eventId\": \"demo-push-1:1\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"D1\",\n      \"action\": \"add\",\n      \"summary\": \"Set the initial slot limit.\",\n      \"before\": null,\n      \"after\": \"Each slot has six places.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 2,\n      \"eventId\": \"demo-push-1:2\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"R1\",\n      \"action\": \"add\",\n      \"summary\": \"Make remaining capacity visible.\",\n      \"before\": null,\n      \"after\": \"Show available places before booking.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 3,\n      \"eventId\": \"demo-push-1:3\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"Q1\",\n      \"action\": \"add\",\n      \"summary\": \"Waiting-list policy remains open.\",\n      \"before\": null,\n      \"after\": \"Should full slots offer a waiting list?\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 4,\n      \"eventId\": \"demo-push-2:4\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D2\",\n      \"action\": \"supersede\",\n      \"summary\": \"D2 supersedes D1: raise the pilot slot limit to eight.\",\n      \"before\": \"Six places per slot (D1).\",\n      \"after\": \"Eight places per slot for the pilot (D2).\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 5,\n      \"eventId\": \"demo-push-2:5\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D3\",\n      \"action\": \"add\",\n      \"summary\": \"Keep the pilot booking flow small.\",\n      \"before\": null,\n      \"after\": \"No waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 6,\n      \"eventId\": \"demo-push-2:6\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"Q1\",\n      \"action\": \"resolve\",\n      \"summary\": \"Close the waiting-list question with its decision link.\",\n      \"before\": \"Waiting-list policy undecided.\",\n      \"after\": \"Resolved by D3: no waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    }\n  ]\n}\n```\n",
+        "lastWriteResponse": "timeout"
+      }
+    },
+    "actions": [
+      {
+        "operation": [
+          "read_local",
+          [
+            "pending"
+          ]
+        ],
+        "result": {
+          "pending": {
+            "batchId": "demo-push-2"
+          }
+        }
+      },
+      {
+        "operation": [
+          "read_main"
+        ],
+        "result": "# Nightjar \u2014 fictional shared project brain\n\nA telescope-booking prototype for volunteers. The calendar shows observing slots and remaining places. The pilot uses eight places per slot and has no waiting list.\n\n## Decisions\n\n- D2 \u2014 Decided, not built \u2014 Each pilot slot has eight places. Supersedes D1.\n- D3 \u2014 Decided, not built \u2014 No waiting list in the pilot, to keep the booking flow small.\n\n## Requirements\n\n- R1 \u2014 Show available places before booking.\n\n## Resolved Questions\n\n- Q1 \u2014 Resolved by D3: the pilot will not offer a waiting list.\n\n## Historical\n\n- D1 \u2014 Superseded by D2 \u2014 Each slot has six places.\n\n## Change Ledger\n\n```json\n{\n  \"schemaVersion\": 1,\n  \"epoch\": \"nightjar-fictional-demo-v1\",\n  \"baseSequence\": 0,\n  \"headSequence\": 6,\n  \"entries\": [\n    {\n      \"sequence\": 1,\n      \"eventId\": \"demo-push-1:1\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"D1\",\n      \"action\": \"add\",\n      \"summary\": \"Set the initial slot limit.\",\n      \"before\": null,\n      \"after\": \"Each slot has six places.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 2,\n      \"eventId\": \"demo-push-1:2\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"R1\",\n      \"action\": \"add\",\n      \"summary\": \"Make remaining capacity visible.\",\n      \"before\": null,\n      \"after\": \"Show available places before booking.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 3,\n      \"eventId\": \"demo-push-1:3\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"Q1\",\n      \"action\": \"add\",\n      \"summary\": \"Waiting-list policy remains open.\",\n      \"before\": null,\n      \"after\": \"Should full slots offer a waiting list?\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 4,\n      \"eventId\": \"demo-push-2:4\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D2\",\n      \"action\": \"supersede\",\n      \"summary\": \"D2 supersedes D1: raise the pilot slot limit to eight.\",\n      \"before\": \"Six places per slot (D1).\",\n      \"after\": \"Eight places per slot for the pilot (D2).\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 5,\n      \"eventId\": \"demo-push-2:5\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D3\",\n      \"action\": \"add\",\n      \"summary\": \"Keep the pilot booking flow small.\",\n      \"before\": null,\n      \"after\": \"No waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 6,\n      \"eventId\": \"demo-push-2:6\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"Q1\",\n      \"action\": \"resolve\",\n      \"summary\": \"Close the waiting-list question with its decision link.\",\n      \"before\": \"Waiting-list policy undecided.\",\n      \"after\": \"Resolved by D3: no waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    }\n  ]\n}\n```\n"
+      },
+      {
+        "operation": [
+          "verify_existing_batch",
+          "demo-push-2"
+        ],
+        "result": {
+          "matchingEvents": [
+            {
+              "sequence": 4,
+              "eventId": "demo-push-2:4",
+              "batchId": "demo-push-2",
+              "recordId": "D2",
+              "action": "supersede",
+              "summary": "D2 supersedes D1: raise the pilot slot limit to eight.",
+              "before": "Six places per slot (D1).",
+              "after": "Eight places per slot for the pilot (D2).",
+              "source": "conversation.md \u2014 explicit human decision or question",
+              "publishedAt": "2026-10-17T19:00:00Z"
+            },
+            {
+              "sequence": 5,
+              "eventId": "demo-push-2:5",
+              "batchId": "demo-push-2",
+              "recordId": "D3",
+              "action": "add",
+              "summary": "Keep the pilot booking flow small.",
+              "before": null,
+              "after": "No waiting list in the pilot.",
+              "source": "conversation.md \u2014 explicit human decision or question",
+              "publishedAt": "2026-10-17T19:00:00Z"
+            },
+            {
+              "sequence": 6,
+              "eventId": "demo-push-2:6",
+              "batchId": "demo-push-2",
+              "recordId": "Q1",
+              "action": "resolve",
+              "summary": "Close the waiting-list question with its decision link.",
+              "before": "Waiting-list policy undecided.",
+              "after": "Resolved by D3: no waiting list in the pilot.",
+              "source": "conversation.md \u2014 explicit human decision or question",
+              "publishedAt": "2026-10-17T19:00:00Z"
+            }
+          ]
+        }
+      }
+    ],
+    "after": {
+      "request": "/push",
+      "profile": null,
+      "remote": {
+        "main": "# Nightjar \u2014 fictional shared project brain\n\nA telescope-booking prototype for volunteers. The calendar shows observing slots and remaining places. The pilot uses eight places per slot and has no waiting list.\n\n## Decisions\n\n- D2 \u2014 Decided, not built \u2014 Each pilot slot has eight places. Supersedes D1.\n- D3 \u2014 Decided, not built \u2014 No waiting list in the pilot, to keep the booking flow small.\n\n## Requirements\n\n- R1 \u2014 Show available places before booking.\n\n## Resolved Questions\n\n- Q1 \u2014 Resolved by D3: the pilot will not offer a waiting list.\n\n## Historical\n\n- D1 \u2014 Superseded by D2 \u2014 Each slot has six places.\n\n## Change Ledger\n\n```json\n{\n  \"schemaVersion\": 1,\n  \"epoch\": \"nightjar-fictional-demo-v1\",\n  \"baseSequence\": 0,\n  \"headSequence\": 6,\n  \"entries\": [\n    {\n      \"sequence\": 1,\n      \"eventId\": \"demo-push-1:1\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"D1\",\n      \"action\": \"add\",\n      \"summary\": \"Set the initial slot limit.\",\n      \"before\": null,\n      \"after\": \"Each slot has six places.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 2,\n      \"eventId\": \"demo-push-1:2\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"R1\",\n      \"action\": \"add\",\n      \"summary\": \"Make remaining capacity visible.\",\n      \"before\": null,\n      \"after\": \"Show available places before booking.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 3,\n      \"eventId\": \"demo-push-1:3\",\n      \"batchId\": \"demo-push-1\",\n      \"recordId\": \"Q1\",\n      \"action\": \"add\",\n      \"summary\": \"Waiting-list policy remains open.\",\n      \"before\": null,\n      \"after\": \"Should full slots offer a waiting list?\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T18:00:00Z\"\n    },\n    {\n      \"sequence\": 4,\n      \"eventId\": \"demo-push-2:4\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D2\",\n      \"action\": \"supersede\",\n      \"summary\": \"D2 supersedes D1: raise the pilot slot limit to eight.\",\n      \"before\": \"Six places per slot (D1).\",\n      \"after\": \"Eight places per slot for the pilot (D2).\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 5,\n      \"eventId\": \"demo-push-2:5\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"D3\",\n      \"action\": \"add\",\n      \"summary\": \"Keep the pilot booking flow small.\",\n      \"before\": null,\n      \"after\": \"No waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    },\n    {\n      \"sequence\": 6,\n      \"eventId\": \"demo-push-2:6\",\n      \"batchId\": \"demo-push-2\",\n      \"recordId\": \"Q1\",\n      \"action\": \"resolve\",\n      \"summary\": \"Close the waiting-list question with its decision link.\",\n      \"before\": \"Waiting-list policy undecided.\",\n      \"after\": \"Resolved by D3: no waiting list in the pilot.\",\n      \"source\": \"conversation.md \\u2014 explicit human decision or question\",\n      \"publishedAt\": \"2026-10-17T19:00:00Z\"\n    }\n  ]\n}\n```\n",
+        "lastWriteResponse": "timeout"
+      },
+      "verifiedBatch": "demo-push-2"
+    },
+    "response": "The pilot limit and waiting-list decision are saved, with their ledger entries verified."
+  }
+]

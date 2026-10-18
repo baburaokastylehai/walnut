@@ -1,0 +1,44 @@
+[
+  {
+    "case": "run-one-partial",
+    "invariants": {
+      "pendingDurablySaved": true,
+      "mainUnchanged": true,
+      "successfulCheckpointUnchanged": true
+    },
+    "response": "The mirror is updated. Its ledger event is still pending because the main-page append failed."
+  },
+  {
+    "case": "run-two-already-present",
+    "invariants": {
+      "sharedWrites": 0,
+      "duplicateEvents": 0,
+      "pendingClearedAfterEvidenceCheck": true,
+      "mainUnchanged": true,
+      "childUnchanged": true
+    },
+    "response": "The pending flow event was already saved. I verified it and cleared the local recovery marker."
+  },
+  {
+    "case": "run-two-recover-unchanged",
+    "invariants": {
+      "eventCountAdded": 1,
+      "sequenceAllocatedFromCurrentHead": 4,
+      "stableIdentityPreserved": true,
+      "pendingClearedOnlyAfterReadback": true,
+      "childRewrites": 0,
+      "ledgerValid": true
+    },
+    "response": "Recovered the flow mirror\u2019s missing ledger event. The mirror was already current."
+  },
+  {
+    "case": "run-two-stale-child",
+    "invariants": {
+      "sharedWrites": 0,
+      "pendingRetained": true,
+      "successfulCheckpointUnchanged": true,
+      "noNoChangeSuccessClaim": true
+    },
+    "response": "The pending event describes the full-slot flow, but the mirror now describes a different allocation flow. I kept the recovery evidence; these versions need reconciliation before publishing its event."
+  }
+]

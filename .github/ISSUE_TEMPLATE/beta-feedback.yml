@@ -1,0 +1,64 @@
+name: Beta feedback
+description: Report a reproducible problem or an unclear Walnut interaction.
+title: "[Beta] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use fictional examples. Issues are public: remove private project content, site/page identifiers, credentials, personal paths and raw local state. Report a security concern through SECURITY.md instead.
+  - type: input
+    id: version
+    attributes:
+      label: Walnut version or commit
+      description: Include the install method (checkout, exported skills or optional marketplace).
+      placeholder: "v0.3.0, exported skills"
+    validations:
+      required: true
+  - type: input
+    id: host
+    attributes:
+      label: Host and version
+      description: Include operating system and Confluence connector type if known. Do not include account or site identifiers.
+      placeholder: "Host <name/version>, OS <name>, connector <type>"
+    validations:
+      required: true
+  - type: dropdown
+    id: action
+    attributes:
+      label: Where did this happen?
+      options:
+        - Installation or setup
+        - Push
+        - First pull
+        - Recurring pull
+        - Recovery or partial failure
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Fictional reproduction
+      description: Give the starting state, fictional source facts, action and steps needed to reproduce. Say whether this used the actual skill execution or a simulation.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: What happened?
+      description: Include a short sanitized reply or error if useful. Describe verified page/state changes separately from what the assistant claimed.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Public report check
+      options:
+        - label: I used fictional content and removed private identifiers, credentials and local state.
+          required: true

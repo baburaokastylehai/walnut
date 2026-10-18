@@ -1,8 +1,0 @@
-{
-  "name": "push",
-  "version": "0.2.0",
-  "description": "Keep durable project context straight across AI conversations, project files, and a shared destination by publishing only confirmed, reconciled changes.",
-  "author": {
-    "name": "Atharva Shembekar"
-  }
-}

@@ -26,16 +26,15 @@ diff
 
                 ↓
 
-small internal ledger
+private candidate ledger
 identity + provenance + fingerprints
-not another project document
 
                 ↓
 
 publish / mirror
 ────────────────────────────────────
 
-shared project brain
+shared project brain + persistent Change Ledger
 Confluence first
 other destinations later
 
@@ -50,6 +49,12 @@ brief what changed
 ```
 
 Walnut's intelligence lives in the middle.
+
+## Host boundary and distribution
+
+Push and pull are host-executed instructions. The host supplies readable sources and references, a private persistent workspace, and authenticated destination tools. Push requires version-aware updates and read-back; pull requires complete reads. Walnut does not authenticate a host, provide its model or bridge tools between AI applications.
+
+The source skills live at `plugins/walnut/skills/{push,pull}/SKILL.md` and can be loaded from an intact checkout. `node scripts/export-skills.mjs <destination-directory>` prepares self-contained `push/` and `pull/` folders with their own references and helper for native skill loaders. The Claude Code marketplace package is an optional adapter over the same source skills. Installation and invocation are host-specific; each intended host needs capability and behavioral validation.
 
 ## The pipeline
 
@@ -409,3 +414,15 @@ Role lenses control:
 They do not create separate role-specific facts.
 
 The first pull establishes a baseline and gives full project onboarding. Later pulls are delta-oriented.
+
+## v0.3 package and continuity
+
+One source package at `plugins/walnut` contains both skills. Shared references contain character, project language, destination-state migration and the persistent ledger contract. They are runtime instructions, not repository-only brand documentation. Exported native skills carry copies of their dependencies; exporting does not introduce another policy implementation.
+
+The candidate ledger is private and temporary. The shared Change Ledger is persisted with verified semantic changes, carrying an epoch, contiguous sequence, stable batch/event identity and provenance. Pull consumes events after its local cursor and also compares current records to detect direct edits. Gaps or missing ledgers fall back to semantic snapshots.
+
+The optional Node helper validates ledger structure and cursor coverage. It does not confirm facts or decide semantic equivalence. These remain host-AI responsibilities.
+
+The main page can update records and events together under a revision guard. Child mirrors require separate writes, with pending-event recovery on partial failure. Read-back verification precedes checkpoint advancement.
+
+See [the ledger contract](../plugins/walnut/references/change-ledger.md), [state contract](../plugins/walnut/references/local-state.md) and [beta limits](LIMITATIONS.md).

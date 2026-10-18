@@ -1,0 +1,36 @@
+{
+  "method": "Manual execution of exported pull SKILL.md and exported references in Codex with live Atlassian connector reads",
+  "host": "Codex",
+  "source": "exported instructions only; no canonical package reads for this acceptance",
+  "persona": "fictional QA testing booking flow; inferred tentative lens",
+  "firstPull": {
+    "result": "complete onboarding brief",
+    "mainRevision": 4,
+    "mirrorRevision": 2,
+    "ledgerHead": 7,
+    "checkpointSaved": true,
+    "sharedEventsNotMisreportedAsNew": true
+  },
+  "secondPull": {
+    "freshMainAndMirrorReads": true,
+    "result": "You\u2019re caught up. Nothing meaningful changed since your last pull.",
+    "sameMainRevision": true,
+    "sameMirrorRevision": true,
+    "sameBodies": true,
+    "ledgerCursorPersisted": true,
+    "timestampAdvanced": true,
+    "checkpointSaved": true
+  },
+  "destinationOperations": {
+    "reads": 4,
+    "writes": 0,
+    "onlyFictionalMainAndLinkedMirror": true
+  },
+  "privateState": "Git ignored .walnut; atomic project.json and pull-state.json writes in isolated reader workspace",
+  "limits": [
+    "Manual instruction execution does not verify automatic skill discovery in Codex or other hosts.",
+    "No push write or injected failure in this acceptance.",
+    "Read calls can increment service view counts; content bodies and versions unchanged.",
+    "Private checkpoint workspace is local temp storage, not proof of persistence across machines or host resets."
+  ]
+}

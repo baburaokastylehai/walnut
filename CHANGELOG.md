@@ -1,6 +1,14 @@
 # Changelog
 
-## [pull 0.1.0] — Unreleased
+## 0.3.0 — public-beta candidate
+
+- One Walnut plugin containing push and pull, with shared character, terminology and local-state contracts.
+- Persistent shared change ledger, snapshot fallback and retry/partial-write recovery rules.
+- Role inference from useful context, a general lens when declined, and clearer first-versus-recurring behavior.
+- Fictional public demo and fixtures, product README, architecture image, setup/migration, limitations and public contribution/security guidance.
+- Package and ledger validation, regression fixtures and explicit live-test boundaries.
+
+## [pull 0.1.0] — 2026-09-27
 
 ### Added
 
@@ -13,10 +21,6 @@
 - read-only Confluence consumption;
 - pull-specific semantic fixtures for first use, designer onboarding, recurring dev/QA updates, and no-change runs.
 
-
-All notable Walnut changes are recorded here.
-
-Walnut follows Semantic Versioning during the pre-1.0 phase.
 
 ## [0.2.0] — 2026-09-25
 
@@ -46,4 +50,4 @@ Walnut follows Semantic Versioning during the pre-1.0 phase.
 
 Initial Walnut / `push` plugin baseline.
 
-The exact repository state is preserved at `archive/v0.1.0` and commit `archive/v0.1.0 (sanitized history)`.
+The sanitized package baseline is retained privately or locally; this independent public repository begins with a clean snapshot.
