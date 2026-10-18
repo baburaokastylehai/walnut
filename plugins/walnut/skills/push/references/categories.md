@@ -87,15 +87,19 @@ This category is about the project, not about Walnut's own maintenance.
 
 ## Proposals
 
-Use for a human-originated idea explicitly still under consideration.
+Use for a meaningful human-owned idea or hypothesis explicitly still under consideration. Preserve its tentative or untested status; do not write it as a decided direction or a validated fact.
 
-Do not place assistant-originated suggestions here unless a human has taken ownership of the proposal.
+Do not place assistant-originated suggestions here unless a human has taken ownership of exploring them, for example by explicitly asking to compare or evaluate the idea. Acknowledging an assistant response or moving on does not establish ownership or adoption.
+
+Preserve meaningful alternatives and supplied reasoning as their status changes. Distinguish an option deferred or excluded from current scope from one permanently rejected. Include revisit conditions only when supplied, without creating future commitments or tasks.
 
 If the proposal becomes settled later, reconcile it into the appropriate durable category instead of duplicating it.
 
 ## Research & Findings
 
 Use for meaningful evidence, research, observations, data, source material, or findings that the human introduced/confirmed or an authoritative file contains.
+
+Keep the source and its limits visible. Introduced evidence may support an investigation without proving the hypothesis; a small sample or tentative interpretation must not become a validated general finding.
 
 When the content contains discrete data points, preserve its structure with a table/list rather than flattening it into prose.
 

@@ -18,33 +18,33 @@ The optional Claude plugin uses `claude --plugin-dir ./plugins/walnut` for a bra
 
 Create a separate test workspace. Before saving state, add `.walnut/` and `.claude/push-target.local.json` to its Git ignore rules and confirm they are ignored. Keep test receipts and local state private. Each reader needs a separate workspace/profile.
 
-## A small trial
+## A product-discovery trial
 
-Give Walnut the exact URL of a disposable page you control. Confirm its returned title before writing. Start with an empty page; do not use a real project record.
+Use the [fictional Fold source sessions](../examples/product-discovery/README.md) in a separate test workspace and the exact URL of a disposable page you control. Confirm its returned title before writing. Do not use a real project record.
 
-1. **First push.** Tell the host: “Nightjar is a telescope-booking prototype for volunteers. We're preparing a small pilot. We've decided each slot has six places, and the calendar must show remaining places before booking. Should full slots offer a waiting list? That is still open.” Add an unconfirmed suggestion: “An assistant suggested automatic reminders; we have not decided to add them.” Run `/push`.
+1. **Preserve exploration without promoting it.** For the first phase, copy only `session-01.md`, `session-02.md` and `project-brief.md` from the demo's `sources/` into your test workspace. Do not expose later sessions or example expected outputs as source material. Run `/push`.
 
-   Pass: the shared page records the limit, visibility requirement and open question, with a readable change ledger. Reminders do not become a requirement. Read-back confirms the saved content; the reply describes only what completed.
+   Pass: Walnut retains the PM's direction, explicit approval requirement, unresolved access question, tentative comparison proposal and limited observation. Rationale for deferring a broader workspace survives. The hypothesis is not described as validated customer research. Unowned assistant suggestions do not become scope. Read-back verifies records and the shared ledger.
 
-2. **First pull.** In the same workspace, say “I'm testing the booking flow. Catch me up.” Run `/pull`.
+2. **Join without reading the chats.** In a separate reader workspace, say “I'm the designer joining this. What's the product, why this scope, and what is still open?” Run `/pull`.
 
-   Pass: Walnut explains the project and its current state, uses a tentative QA lens without asking for a role again, and labels testing implications as implications. It saves a local baseline after reading successfully. Pull makes no shared writes. A saved role without a successful baseline must still receive this first-use briefing.
+   Pass: a coherent first briefing, with decisions separate from hypotheses and implications separate from assigned tasks. It saves a private baseline only after complete reads. A second new reader can ask through an engineering lens and receive the same project truth with a different emphasis. Neither pull writes shared data.
 
-3. **Recurring update.** Say “We've decided the pilot will use eight places per slot. There will be no waiting list in the pilot, to keep the flow small.” Run `/push`, then `/pull`.
+3. **Change the direction without losing why.** Add `session-03.md` and `pilot-scope-update.md` to the PM's source workspace, then run `/push`. Return to the designer's existing reader workspace and run `/pull`.
 
-   Pass: the six-place decision remains historical, the current limit is eight, and the waiting-list question is resolved. The pull leads with those changes rather than onboarding again. The ledger preserves earlier events and adds the new semantic changes.
+   Pass: the new stable-page direction supersedes separate version links while retaining the original trade-off; the requirement is refined; the access question resolves; comparison is deferred, not disproved or promised. The new old-approval question stays open. The recurring briefing leads with the change and its supplied reason, rather than starting over.
 
-4. **Nothing changed.** Run each action again without changing the sources or page.
+4. **Nothing changed.** Repeat each action with unchanged sources/page.
 
-   Pass: push does not update Confluence or add duplicate events. Pull reads successfully and gives a short no-change result. It does not repeat the overview. A successfully covered local checkpoint may advance.
+   Pass: push makes no shared write or duplicate event. Pull rereads and gives a short no-change response without repeating the overview. Its checkpoint advances only after a complete successful read.
 
-5. **Direct page edit.** In Confluence, edit the fictional remaining-places requirement to say it must also show the slot's local start time. Leave the change ledger untouched. Run `/pull`.
+5. **Direct page edit.** Manually add a clearly labeled, still-unresolved question about approval-request wording to the fictional shared record without adding a ledger event. Run `/pull`.
 
-   Pass: snapshot comparison detects the changed requirement despite no new event. The briefing explains the change without claiming a ledger event exists. Pull makes no shared writes. Run pull again after the successful baseline: it gives the short no-change result.
+   Pass: snapshot comparison detects the new question despite no new event. It is described as open, not an adopted wording requirement. Pull makes no shared writes. A further successful pull gives the no-change result.
 
-6. **Required read fails.** Use a separate fictional trial with a linked child page whose content is required for the briefing. Establish a successful reader baseline, then change the child and make that child unreadable to the test connection while keeping the main page readable. Use a separate account or controlled test adapter if necessary; do not change permissions on real pages. Run `/pull`.
+6. **Required read fails.** In a separate fictional trial, establish a reader baseline with a required linked child page. Make that child unreadable through a controlled test account or adapter while keeping the main page readable. Do not change permissions on real pages. Run `/pull`.
 
-   Pass: Walnut explains that the briefing is partial, makes no shared writes, and leaves the prior reader checkpoint unchanged. Compare the private state before and after. Restore test access afterward. If your connection cannot safely reproduce the failure, record this case as untested; a simulated denial must be labeled simulated.
+   Pass: the briefing is explicitly partial and the entire prior checkpoint remains unchanged. Restore disposable test access afterward. Record simulated failures as simulated; if the connection cannot reproduce a denial safely, record live coverage as untested.
 
 ## Record enough to review
 

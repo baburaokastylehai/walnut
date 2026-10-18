@@ -62,7 +62,7 @@ for (const base of ['evals/fixtures', 'evals/pull-fixtures']) {
     if (!expected || typeof expected !== 'object' || !Object.keys(expected).length) fail(`empty fixture expectations: ${folder}`);
   }
 }
-for (const name of ['examples/nightjar/ledger-initial.json', 'examples/nightjar/ledger-current.json']) {
+for (const name of ['examples/product-discovery/ledger-initial.json', 'examples/product-discovery/ledger-current.json']) {
   const errors = validateLedger(data.get(name));
   for (const error of errors) fail(`${name}: ${error}`);
 }
@@ -76,10 +76,10 @@ else {
   }
 }
 for (const phase of ['initial', 'current']) {
-  const page = read(`examples/nightjar/shared-brain-${phase}.md`);
+  const page = read(`examples/product-discovery/shared-brain-${phase}.md`);
   const embedded = page.match(/```json\n([\s\S]*?)\n```/);
   try {
-    if (!embedded || JSON.stringify(JSON.parse(embedded[1])) !== JSON.stringify(data.get(`examples/nightjar/ledger-${phase}.json`))) fail(`demo page/ledger mismatch: ${phase}`);
+    if (!embedded || JSON.stringify(JSON.parse(embedded[1])) !== JSON.stringify(data.get(`examples/product-discovery/ledger-${phase}.json`))) fail(`demo page/ledger mismatch: ${phase}`);
   } catch { fail(`invalid embedded ledger: ${phase}`); }
 }
 const png = fs.readFileSync(path.join(root, 'assets/walnut-architecture.png'));

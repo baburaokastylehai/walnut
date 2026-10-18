@@ -48,7 +48,7 @@ test('portable helper works from either exported skill without source imports', 
     const helper = path.join(root, 'scripts/ledger.mjs');
     const {validateLedger} = await import(pathToFileURL(helper));
     assert.ok(validateLedger({}).length > 0);
-    const fixture = fileURLToPath(new URL('../examples/nightjar/ledger-current.json', import.meta.url));
+    const fixture = fileURLToPath(new URL('../examples/product-discovery/ledger-current.json', import.meta.url));
     const standaloneInput = path.join(root, 'ledger.json');
     fs.copyFileSync(fixture, standaloneInput);
     execFileSync(process.execPath, [helper, standaloneInput], {cwd: root});

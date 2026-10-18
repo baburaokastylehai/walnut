@@ -1,3 +1,7 @@
+# Historical regression data
+
+This small fictional dataset is retained for existing failure and ledger regression checks. It is not the current product walkthrough. See [the product-discovery demo](../../../examples/product-discovery/README.md) for Walnut’s intended use.
+
 # Nightjar: a fictional project, end to end
 
 Nightjar is invented for this walkthrough. These files contain no real project content. They show expected skill behavior; they do not perform a Confluence write.
@@ -45,7 +49,7 @@ No repeated overview and no new shared-page write.
 From the repository root, with Node.js 22+:
 
 ```sh
-node plugins/walnut/scripts/ledger.mjs examples/nightjar/ledger-current.json
+node plugins/walnut/scripts/ledger.mjs evals/regression-data/nightjar/ledger-current.json
 node scripts/validate-repo.mjs
 node --test
 ```

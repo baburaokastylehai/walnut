@@ -11,7 +11,7 @@ fs.mkdirSync(output,{recursive:true});
 const copy=x=>structuredClone(x);
 const target={provider:'confluence',cloudId:'fictional',pageId:'nightjar-demo'};
 const event={eventId:'fake-mirror-recovery:7',batchId:'fake-mirror-recovery',recordId:'fake-flow-17',action:'mirror',summary:'The fictional booking flow now explains full-slot behavior.',before:'Calendar shows remaining capacity.',after:'Calendar shows remaining capacity and a full-slot state.',source:'fictional-flow.md — human-approved context',publishedAt:'2026-10-17T20:00:00Z'};
-const initial={target,main:{revision:10,ledger:JSON.parse(fs.readFileSync(path.join(repoRoot,'examples/nightjar/ledger-initial.json')))},child:{id:'fake-flow-17',revision:1,semantic:event.before},pushCheckpoint:{mainRevision:9},pending:[]};
+const initial={target,main:{revision:10,ledger:JSON.parse(fs.readFileSync(path.join(repoRoot,'evals/regression-data/nightjar/ledger-initial.json')))},child:{id:'fake-flow-17',revision:1,semantic:event.before},pushCheckpoint:{mainRevision:9},pending:[]};
 function save(name,before,actions,after,response,invariants){const dir=path.join(output,name);fs.mkdirSync(dir,{recursive:true});for(const [file,data] of Object.entries({'before.json':before,'actions.json':actions,'after.json':after,'invariants.json':invariants}))fs.writeFileSync(path.join(dir,file),JSON.stringify(data,null,2)+'\n');fs.writeFileSync(path.join(dir,'response.md'),response+'\n');}
 const partial=copy(initial);partial.child={id:'fake-flow-17',revision:2,semantic:event.after};
 partial.pending=[{target:copy(target),childId:partial.child.id,verifiedChildRevision:2,semanticSnapshot:partial.child.semantic,event:{...event,sequence:7}}];

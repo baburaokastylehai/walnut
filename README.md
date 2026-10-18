@@ -10,7 +10,7 @@ Walnut keeps that story straight. `/push` carries confirmed project context into
 
 ## Two commands. One project story.
 
-**Push what stuck.** Work normally with your AI. When something is settled, run `/push`. Walnut checks the conversation, current project docs, and the existing shared record. It adds or reconciles confirmed changes, keeps the history, records a change ledger, and reads the result back. An assistant suggestion does not become a decision just because it sounds useful.
+**Push what stuck.** Work normally with your AI. When there is context worth keeping, run `/push`. Walnut checks the conversation, current project docs, and the existing shared record. It preserves decisions, human-owned proposals, research and open questions with their status intact, keeps the history, records a change ledger, and reads the result back. An assistant suggestion does not become a decision just because it sounds useful.
 
 **Pull what matters.** Joining a project? `/pull` explains the problem, direction, status, and what matters for your role. Coming back? It shows meaningful changes since your last successful pull. Your role changes the emphasis; important project-wide changes stay visible.
 
@@ -60,27 +60,41 @@ On your first push, give Walnut the exact Confluence page URL. It verifies and r
 
 To test a branch, check out that branch before loading or exporting the skills. Claude Code can also use `claude --plugin-dir ./plugins/walnut`. Marketplace installation follows `main`.
 
-[Setup and migration](docs/SETUP.md) · [Fictional walkthrough](examples/nightjar/README.md)
+[Setup and migration](docs/SETUP.md) · [Fictional walkthrough](examples/product-discovery/README.md)
 
-## A small example
+## From a long chat to a shared direction
 
-The fictional Nightjar team is building a telescope-booking calendar.
+A product manager is working through a new product with AI. Across several sessions, they explore who it is for, compare approaches, change their mind and leave questions open. The designer joining tomorrow needs the direction and its reasoning, without reading every conversation.
+
+The [fictional product-discovery walkthrough](examples/product-discovery/README.md) follows that work:
 
 ```text
-Human: Six places per slot. Show remaining places before booking.
-Assistant: We could send automatic reminders too.
-Human: Let’s discuss availability next.
-
+PM: Let's explore a tool for studios collecting client feedback.
+    Keep this as a hypothesis, not a validated customer problem.
 /push
-→ saved the slot limit and available-places requirement.
-  reminders stayed out of the shared record.
+→ keeps the working direction, hypothesis and open questions.
 
-/pull — I’m testing this
-→ each slot has six places. for QA, check the last available place
-  and the first booking beyond capacity. the waiting-list question is still open.
+PM, new chat: Why did we park the client workspace idea?
+/pull
+→ recovers the saved trade-off; comparison is still a tentative idea.
+
+Designer: I'm joining this project. What are we building, and why?
+/pull
+→ explains the product, current scope and unresolved design questions.
+
+PM, later: Narrow the first version to getting a clear approval.
+           Defer the annotation editor; here's why.
+/push
+→ updates the direction and keeps the earlier reasoning traceable.
+
+Designer, after another PM session:
+/pull
+→ explains what changed and what it means for the design.
 ```
 
-That QA boundary is an implication of the confirmed limit, not a newly assigned task. The [full walkthrough](examples/nightjar/README.md) includes sources, the shared record, ledger, first pull, recurring pull, and a no-change run. Every example is fictional.
+The walkthrough shows the source sessions, shared record, retained alternatives, excluded assistant suggestions and different briefings for a designer and engineer. It is a fictional illustration of expected behavior, not a transcript of a live test.
+
+Walnut keeps a source-grounded trail of the work worth retaining. A hypothesis stays a hypothesis; considering an idea does not make it a decision. It does not archive every chat or recover history the host cannot access.
 
 ## What stays dependable
 

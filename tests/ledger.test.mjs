@@ -2,10 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {validateLedger, ledgerCoverage} from '../plugins/walnut/scripts/ledger.mjs';
-const sample = JSON.parse(fs.readFileSync(new URL('../examples/nightjar/ledger-current.json', import.meta.url)));
+const sample = JSON.parse(fs.readFileSync(new URL('../evals/regression-data/nightjar/ledger-current.json', import.meta.url)));
 const copy = () => structuredClone(sample);
 
-test('published walkthrough has complete contiguous event history', () => {
+test('historical regression ledger has complete contiguous event history', () => {
   assert.deepEqual(validateLedger(sample), []);
   const result = ledgerCoverage(sample, {epoch: sample.epoch, sequence: 3});
   assert.equal(result.mode, 'ledger_and_snapshot');
