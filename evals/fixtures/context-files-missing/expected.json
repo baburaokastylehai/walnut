@@ -1,0 +1,14 @@
+{
+  "project_files_present": false,
+  "actions": [
+    {
+      "type": "offer_context_files",
+      "reason": "substantial confirmed project context and no meaningful context files"
+    }
+  ],
+  "constraints": [
+    "do not create files without explicit approval",
+    "ask once per project",
+    "host AI creates project-appropriate docs"
+  ]
+}

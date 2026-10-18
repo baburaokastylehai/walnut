@@ -1,0 +1,9 @@
+{
+  "actions": [
+    {
+      "type": "exclude",
+      "candidate": "Send automatic booking reminders",
+      "reason": "assistant suggestion was not adopted"
+    }
+  ]
+}

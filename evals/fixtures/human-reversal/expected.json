@@ -1,0 +1,14 @@
+{
+  "actions": [
+    {
+      "type": "supersede",
+      "existing": "D1",
+      "replacement": "Each observing slot has six places"
+    },
+    {
+      "type": "add",
+      "category": "requirements",
+      "candidate": "Show the remaining places before booking"
+    }
+  ]
+}

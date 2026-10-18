@@ -1,0 +1,31 @@
+{
+  "mode": "recurring_pull",
+  "updates": [
+    {
+      "id": "D2",
+      "relevance": "for_you",
+      "reason": "cancellation boundary changes observable behavior"
+    },
+    {
+      "id": "R2",
+      "relevance": "for_you",
+      "reason": "QA needs the two-hour boundary"
+    },
+    {
+      "id": "D3",
+      "relevance": "project_visibility",
+      "reason": "guide timing affects project planning"
+    }
+  ],
+  "unchanged": [
+    "D1",
+    "R1",
+    "Q1"
+  ],
+  "constraints": [
+    "role changes emphasis, not truth",
+    "no repeated onboarding",
+    "do not hide D3",
+    "no invented implementation"
+  ]
+}

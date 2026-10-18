@@ -1,0 +1,9 @@
+{
+  "mode": "recurring_pull",
+  "updates": [],
+  "response_intent": "Briefly say nothing meaningful changed.",
+  "constraints": [
+    "do not repeat overview",
+    "formatting is not a change"
+  ]
+}

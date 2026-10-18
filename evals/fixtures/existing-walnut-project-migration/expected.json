@@ -1,0 +1,36 @@
+{
+  "mode": "existing_project_migration",
+  "preserve": {
+    "existing_page": true,
+    "existing_display_ids": [
+      "D1",
+      "R1",
+      "Q1"
+    ],
+    "existing_child_pages": [
+      "child-page-architecture",
+      "child-page-requirements"
+    ]
+  },
+  "actions": [
+    {
+      "type": "add",
+      "category": "decisions",
+      "candidate": "Show full slots in the calendar",
+      "expected_display_id": "D2"
+    },
+    {
+      "type": "no_op",
+      "existing": "R1"
+    },
+    {
+      "type": "no_op",
+      "existing": "Q1"
+    }
+  ],
+  "migration_requirements": [
+    "preserve IDs, existing history and child-page mappings",
+    "continue existing sequences",
+    "reconcile without rebuilding"
+  ]
+}

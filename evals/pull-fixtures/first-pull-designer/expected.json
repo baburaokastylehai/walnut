@@ -1,0 +1,14 @@
+{
+  "mode": "first_pull",
+  "must_cover": [
+    "shared telescope-booking problem",
+    "six-place slots and calendar direction",
+    "prototype status and open waiting-list question",
+    "available and full slot states"
+  ],
+  "must_not": [
+    "lead with IDs",
+    "invent layouts or architecture",
+    "decide the waiting-list question"
+  ]
+}
